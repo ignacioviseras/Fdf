@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 19:57:48 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/08 20:57:38 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/08 21:10:24 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,11 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 SRCS	=	ft_bzero.c \
 			ft_calloc.c \
+			ft_memset.c \
 			ft_split.c \
 			ft_strchr.c \
 			ft_strdup.c \
+			ft_strjoin.c \
 			ft_strlcpy.c \
 			ft_strlen.c \
 			ft_substr.c

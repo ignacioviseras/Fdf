@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 17:43:36 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 21:09:10 by igvisera         ###   ########.fr       */
+/*   Created: 2023/10/05 20:19:58 by igvisera          #+#    #+#             */
+/*   Updated: 2024/02/08 21:07:22 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "utils.h"
 
-int main(int argc, char *argv[])
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    char *file;
-    
-    if (argc != 2)
-        return (0);
-    else
-    {
-        file = argv[1];
-        char *x = ft_strjoin("cat ", file);
-    	system(x);
+	char	*c1;
+	size_t	len_max;
 
-    }
-        // printf("%s", argv[1]);
-    return (0);
+	len_max = (ft_strlen(s1) + ft_strlen(s2)) + 1;
+	if (!s1 || !s2)
+		return (NULL);
+	c1 = (char *)ft_calloc(len_max, sizeof(char));
+	if (!c1)
+		return (NULL);
+	ft_strlcpy(c1, (char *)s1, ft_strlen((const char *)s1) + 1);
+	ft_strlcat(c1, s2, len_max);
+	return (c1);
 }

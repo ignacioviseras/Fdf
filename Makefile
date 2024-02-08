@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/08 19:46:50 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/08 21:12:42 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ OBJS	=	${SRCS:.c=.o}
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-		gcc $(CFLAGS) $(OBJS) -I ./fdf.h -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME): $(OBJS) $(UTILS)
+		gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) -framework OpenGL -framework AppKit -o $(NAME)
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(UTILS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
