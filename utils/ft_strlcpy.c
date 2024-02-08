@@ -6,11 +6,11 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:37:25 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 19:30:12 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:58:38 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "utils.h"
 
 size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 17:12:02 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 20:58:41 by igvisera         ###   ########.fr       */
+/*   Created: 2022/09/11 21:21:32 by igvisera          #+#    #+#             */
+/*   Updated: 2024/02/08 21:04:18 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *s, int c, size_t n)
 {
+	char	*mem;
 	size_t	index;
 
+	mem = (char *)s;
 	index = 0;
-	while (s[index])
+	while (index != n)
+	{
+		mem[index] = c;
 		index++;
-	return (index);
+	}
+	return (s);
 }
