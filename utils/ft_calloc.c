@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 17:43:36 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 18:35:01 by igvisera         ###   ########.fr       */
+/*   Created: 2022/09/11 21:52:02 by igvisera          #+#    #+#             */
+/*   Updated: 2024/02/08 19:30:12 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int argc, char *argv[])
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-    char *file;
-    
-    if (argc != 2)
-        return (0);
-    else
-    {
-        file = argv[1];
-        char *x = strjoin("cat ", file);
-    	system(x);
+	void	*mem;
+	size_t	total_mem;
 
-    }
-        // printf("%s", argv[1]);
-    return (0);
+	if (nmemb == SIZE_MAX || size == SIZE_MAX)
+		return (NULL);
+	total_mem = nmemb * size;
+	mem = malloc(total_mem);
+	if (!mem)
+		return (NULL);
+	ft_bzero(mem, total_mem);
+	return (mem);
 }

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 17:43:36 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 18:35:01 by igvisera         ###   ########.fr       */
+/*   Created: 2022/09/17 21:37:25 by igvisera          #+#    #+#             */
+/*   Updated: 2024/02/08 19:30:12 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int argc, char *argv[])
+size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
-    char *file;
-    
-    if (argc != 2)
-        return (0);
-    else
-    {
-        file = argv[1];
-        char *x = strjoin("cat ", file);
-    	system(x);
+	size_t	index;
+	size_t	src_lenght;
 
-    }
-        // printf("%s", argv[1]);
-    return (0);
+	index = 0;
+	src_lenght = ft_strlen(src);
+	if (size == 0)
+		return (src_lenght);
+	while (src[index] != '\0' && index < size - 1)
+	{
+		dst[index] = src[index];
+		index++;
+	}
+	dst[index] = '\0';
+	return (src_lenght);
 }

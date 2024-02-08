@@ -6,20 +6,29 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/04 17:40:15 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/08 19:46:50 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	fdf.a
-OBJS	=	${SRCS:.c=.o}
-CFLAGS		= -Wall -Wextra -Werror
+NAME	=	fdf
+CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS	=	
+UTILS_A		=	utils.a
+UTILS_SRC 	=	./utils/
+UTILS_OBJS	=	$(addprefix $(UTILS_SRC), *.o)
+UTILS     	=	$(addprefix $(UTILS_SRC), $(UTILS_A))
+
+SRCS	=	main.c
+
+OBJS	=	${SRCS:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+		gcc $(CFLAGS) $(OBJS) -I ./fdf.h -framework OpenGL -framework AppKit -o $(NAME)
+
+$(UTILS):
+	$(MAKE) -C $(UTILS_SRC)
 
 clean:
 	rm -f $(OBJS)
