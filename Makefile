@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/13 19:15:07 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/13 21:09:48 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,11 @@ UTILS_SRC 	=	./utils/
 UTILS_OBJS	=	$(addprefix $(UTILS_SRC), *.o)
 UTILS     	=	$(addprefix $(UTILS_SRC), $(UTILS_A))
 
+MLX_A		=	libmlx.dylib
+MLX_SRC 	=	./mlx/
+MLX_OBJS	=	$(addprefix $(MLX_SRC), *.o)
+MLX     	=	$(addprefix $(MLX_SRC), $(MLX_A))
+
 SRCS	=	main.c
 
 OBJS	=	${SRCS:.c=.o}
@@ -25,7 +30,7 @@ OBJS	=	${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(UTILS) $(OBJS)
-	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) -framework OpenGL -framework AppKit -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)

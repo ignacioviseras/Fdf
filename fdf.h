@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 21:17:44 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:51:52 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+// # include <mlx.h>
 # include "./utils/utils.h"
 
 
