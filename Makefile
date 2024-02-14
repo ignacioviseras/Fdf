@@ -6,12 +6,14 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/13 21:09:48 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/14 19:44:14 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g3
+
+STRUCT	=	-lmlx -framework OpenGL -framework AppKit
 
 UTILS_A		=	utils.a
 UTILS_SRC 	=	./utils/
@@ -30,7 +32,7 @@ OBJS	=	${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(UTILS) $(OBJS)
-	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)
