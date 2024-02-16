@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:03:39 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/08 20:58:14 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:18:26 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char			*schar;
 
 	index = 0;
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
+	if (start >= ft_strlen(s) || !*s)
+		return (NULL);
 	if (ft_strlen(s + start) < len)
 		len = ft_strlen(s + start);
 	else if (len > ft_strlen(s) - start)
@@ -29,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!substr)
 		return (NULL);
 	schar = (char *)s;
-	while (s[index])
+	while (s[index] || !*s)
 	{
 		if (index == start)
 		{
