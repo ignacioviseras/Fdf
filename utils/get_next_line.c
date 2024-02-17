@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/02/16 17:44:49 by igvisera          #+#    #+#             */
 /*   Updated: 2024/02/16 17:50:05 by igvisera         ###   ########.fr       */
 /*                                                                            */
@@ -14,9 +17,9 @@
 
 static char	*extract(char *buffer)
 {
-	char	*sentence;
-	int		len_sentence;
-	int		len_all;
+	char *sentence;
+	int len_sentence;
+	int len_all;
 
 	if (!buffer || !*buffer)
 		return (NULL);
@@ -30,9 +33,9 @@ static char	*extract(char *buffer)
 
 static char	*line(char **txt)
 {
-	char	*aux;
-	char	*finder;
-	char	*t;
+	char *aux;
+	char *finder;
+	char *t;
 
 	if (!*txt)
 		return (NULL);
@@ -57,10 +60,10 @@ static char	*line(char **txt)
 
 static char	*read_file(int fd)
 {
-	char		buffer[BUFFER_SIZE + 1];
-	int			status;
-	static char	*txt;
-	char		*aux;
+	char buffer[BUFFER_SIZE + 1];
+	int status;
+	static char *txt;
+	char *aux;
 
 	status = read(fd, buffer, BUFFER_SIZE);
 	while (status > 0)
@@ -85,7 +88,7 @@ static char	*read_file(int fd)
 
 char	*get_next_line(int fd)
 {
-	char	*line;
+	char *line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

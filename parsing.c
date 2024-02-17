@@ -3,18 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:26:30 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/16 21:42:54 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/17 18:43:49 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void    parsing()
+void	extract_content()
 {
-    
+	char file[] = "./maps/42.fdf";
+	int fd;
+	char *str;
+
+	fd = open(file, O_RDONLY);
+	str = get_next_line(fd);
+	while (str != NULL)
+	{
+		if (str == NULL)
+			printf("Error al abrir el archivo.\n");
+		else
+		{
+			printf("%s", str);
+			insert_matrix(str);
+			free(str);
+		}
+		str = get_next_line(fd);
+	}
+	free(str);
+	close(fd);
+}
+
+void	insert_matrix(char str)
+{
+	char **matrix;
+
+	matrix = extract_content;
+	return matrix;
+}
+
+// void	parsing()
+// {
+// 	extract_content
+// }
+
+int	main()
+{
+	parsing();
+	// system("leaks ./fdf");
 }
 
 // int	main (void)

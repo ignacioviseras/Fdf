@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
+#    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/16 17:26:27 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/17 17:44:30 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
-CFLAGS	=	-Wall -Wextra -Werror -g3
+CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
-STRUCT	=	-lmlx -framework OpenGL -framework AppKit
+# STRUCT	=	-lmlx -framework OpenGL -framework AppKit
 
 UTILS_A		=	utils.a
 UTILS_SRC 	=	./utils/
@@ -35,7 +35,8 @@ OBJS	=	${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(UTILS) $(OBJS)
-	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
+	gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME)
+#	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)
