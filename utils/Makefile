@@ -10,22 +10,36 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	utils.a
-CFLAGS	=	-Wall -Wextra -Werror
+NAME			=	utils.a
+CFLAGS			=	-Wall -Wextra -Werror
 
-SRCS	=	ft_bzero.c \
-			ft_calloc.c \
-			ft_memset.c \
-			ft_split.c \
-			ft_strchr.c \
-			ft_strdup.c \
-			ft_strjoin.c \
-			ft_strlcat.c \
-			ft_strlcpy.c \
-			ft_strlen.c \
-			ft_substr.c
+PATH_BASICS 	=	./basics/
+PATH_PRINTF 	=	./printf/
+BASICS   	  	=	$(addprefix $(PATH_BASICS), $(BASICS_SRC))
+PRINTF	     	=	$(addprefix $(PATH_PRINTF), $(PRINTF_SRC))
 
-OBJS	=	${SRCS:.c=.o}
+SRCS			=	get_next_line.c \
+
+BASICS_SRC		=	ft_bzero.c \
+					ft_calloc.c \
+					ft_memset.c \
+					ft_split.c \
+					ft_strchr.c \
+					ft_strdup.c \
+					ft_strjoin.c \
+					ft_strlcat.c \
+					ft_strlcpy.c \
+					ft_strlen.c \
+					ft_substr.c \
+
+PRINTF_SRC		=	ft_printf.c \
+					ft_printNumbers.c \
+					ft_printText.c
+
+
+OBJS			=	${BASICS:.c=.o} \
+					${PRINTF:.c=.o} \
+					${SRCS:.c=.o} \
 
 all: $(NAME)
 
