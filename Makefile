@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/18 15:09:01 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/17 19:53:09 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
+# CFLAGS	=	-Wall -Wextra -Werror -g3 
 CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 # STRUCT	=	-lmlx -framework OpenGL -framework AppKit

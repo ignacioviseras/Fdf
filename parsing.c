@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:26:30 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/17 18:43:49 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/17 20:57:18 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+
+void	insert_matrix(char *str)
+{
+	// char **aux;
+	// char **matrix;
+	t_map mapa;
+	
+	//aux = matrix;
+	//*matrix = str;
+	//matrix++;
+	//free(aux);
+	printf("insert_matrix\n", str);
+	// printf("insert_matrix\n%s", *aux);
+}
 
 void	extract_content()
 {
@@ -23,10 +38,10 @@ void	extract_content()
 	while (str != NULL)
 	{
 		if (str == NULL)
-			printf("Error al abrir el archivo.\n");
+			ft_printf("Error al abrir el archivo.\n");
 		else
 		{
-			printf("%s", str);
+			// printf("%s", str);
 			insert_matrix(str);
 			free(str);
 		}
@@ -36,23 +51,21 @@ void	extract_content()
 	close(fd);
 }
 
-void	insert_matrix(char str)
-{
-	char **matrix;
 
-	matrix = extract_content;
-	return matrix;
-}
 
 // void	parsing()
 // {
 // 	extract_content
 // }
 
+void leaks() {
+	system("leaks fdf");
+}
+
 int	main()
 {
-	parsing();
-	// system("leaks ./fdf");
+	atexit(leaks);
+	extract_content();
 }
 
 // int	main (void)
