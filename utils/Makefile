@@ -32,7 +32,6 @@ BASICS_SRC		=	ft_bzero.c \
 					ft_strlen.c \
 					ft_substr.c \
 					ft_strcmp.c \
-					ft_atoi_base.c \
 
 PRINTF_SRC		=	ft_printf.c \
 					ft_printNumbers.c \

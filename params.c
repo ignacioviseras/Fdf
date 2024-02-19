@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/18 20:29:43 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:43:53 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ char	*validate_file(char *file_name)
 /*
 	Program main
 */
-// int	main(int argc, char **argv)
-// {
+int	main(int argc, char **argv)
+{
 
-// 	if (argc == 2)
-// 	{
-// 		validate_file(argv[1]);
-// 	}
-// 	else
-// 	{
-// 		ft_printf("#########  Error  #########\n");
-// 		ft_printf("The program need only 2 params\n");
-// 		return (0);
-// 	}
-// }
+	if (argc == 2)
+	{
+		validate_file(argv[1]);
+	}
+	else
+	{
+		ft_printf("#########  Error  #########\n");
+		ft_printf("The program need only 2 params\n");
+		return (0);
+	}
+}
