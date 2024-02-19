@@ -20,7 +20,8 @@ PRINTF	     	=	$(addprefix $(PATH_PRINTF), $(PRINTF_SRC))
 
 SRCS			=	get_next_line.c \
 
-BASICS_SRC		=	ft_bzero.c \
+BASICS_SRC		=	ft_atoi.c \
+					ft_bzero.c \
 					ft_calloc.c \
 					ft_memset.c \
 					ft_split.c \

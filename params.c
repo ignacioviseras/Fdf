@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/19 20:43:53 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/19 22:01:06 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*validate_file(char *file_name)
 	len_file = ft_strlen(file_name);
 	len_extension = len_file - 4;
 	if (ft_strcmp(file_name + len_extension, type_extension) == 0 && len_file > 4)
-		return (file_name);
+		load_map(file_name);
 	else
 	{
 		ft_printf("#########  Error  #########\n");
