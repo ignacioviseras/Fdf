@@ -40,19 +40,6 @@ static int	n_words(char const *s, char c)
 	return (words);
 }
 
-static void	**free_all(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	return (free(str), NULL);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;

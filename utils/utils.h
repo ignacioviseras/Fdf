@@ -33,6 +33,7 @@
 # include "stdarg.h"
 # include <fcntl.h>
 
+void	**free_all(char **str);
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);

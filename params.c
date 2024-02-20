@@ -6,31 +6,26 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 19:25:39 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:15:52 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <unistd.h>
-#include <time.h> 
 
 char	*load_map(int fd)
 {
 	char	*file_content;
-	char 	***map;
+	char 	**map;
 
 	// int ***map;
 	file_content = "";
-	ft_printf("Result fd->%i\n", fd);
 	while (file_content != NULL)
 	{
 		file_content = get_next_line(fd);
-		ft_split(file_content, ' ');
 		free(file_content);
 	}
 	free(file_content);
 	close(fd);
-    sleep(3);
     
 	return (NULL);
 }
