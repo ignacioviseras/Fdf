@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:26:30 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/19 22:01:52 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:25:23 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,3 @@
 // 	return (0);
 // }
 
-int	load_map(char *file_name)
-{
-	
-	return(0);
-}

@@ -14,7 +14,7 @@
 # define UTILS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 60
+#  define BUFFER_SIZE 200
 # endif
 
 # ifndef HEXLOWER
