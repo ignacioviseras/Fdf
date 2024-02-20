@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 20:15:52 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/20 22:15:21 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 char	*load_map(int fd)
 {
 	char	*file_content;
-	char 	**map;
+	char 	***map;
 
 	// int ***map;
 	file_content = "";
 	while (file_content != NULL)
 	{
 		file_content = get_next_line(fd);
+		***map = struct_map(file_content);
+		ft_strjoin(***map, file_content);
 		free(file_content);
 	}
 	free(file_content);

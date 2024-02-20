@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 21:13:37 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/20 22:12:47 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,6 @@ static int	n_colum(char const *s, char c)
 	return (words);
 }
 
-static char	**ft_split(char const *s, char c)
-{
-	size_t	i;
-	size_t	len_word;
-	char	**str;
-
-	i = 0;
-	str = ft_calloc(n_colum(s, c) + 1, sizeof(char *));
-	if (!str)
-		return (NULL);
-	while (s && *s != '\0')
-	{
-		while (*s && *s == c)
-			s++;
-		if (!*s)
-			return (str[i] = NULL, str);
-		if (!ft_strchr(s, c))
-			len_word = ft_strlen(s);
-		else
-			len_word = ft_strchr(s, c) - s;
-		str[i] = ft_substr(s, 0, len_word);
-		if (!str[i++])
-			return (free_all(str), NULL);
-		s += len_word;
-	}
-	return (str[i] = NULL, str);
-}
-
 /*
 
     0   1   2   3   +1 para el \0
@@ -77,6 +49,12 @@ static char	**ft_split(char const *s, char c)
 4   c   o   m   o
 5   e   s   t   a
 
+    0   1   2   3   +1 para el \0
+0	0	0	10	10
+1
+2
+3
+4
 */
 /*
 1
@@ -86,17 +64,16 @@ static char	**ft_split(char const *s, char c)
 5
 6
 7
-
-[0][0][0] 1 [0][0][1] color
-[0][1][0] 2
-[0][2][0] 3
-[0][3][0] 4
-
-[1][0][0] 1
-
+[0][0][0]valor
+[0][0][1]color
+map[0] = hola
+***map = fila
+**map = columna
+*map = {q, color}
+map = valor
 */
 
-char    ***load_map(char *line)
+char    ***struct_map(char *line, int c)
 {
     int i;
     int x;
@@ -104,20 +81,13 @@ char    ***load_map(char *line)
     char    **line_extract;
     char    ***map;
 
+	**map = ft_calloc(n_colum(line, c) + 1, sizeof(char *));
     line_extract = ft_split(line, ' ');
-    while ()
+    while (*line_extract)
     {
-        ***map = ft_strdup(li)
-        while (/* condition */)
-        {
-            // if (hay com)
-            // {
-            //     /* code */
-            // }
-            
-        }
-        
+        **map = ft_strdup(*line_extract);
+		**map++;
+        *line_extract++;
     }
-    
-
+	return(***map);
 }
