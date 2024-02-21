@@ -91,3 +91,11 @@ char    ***struct_map(char *line, int c)
     }
 	return(***map);
 }
+
+/*
+0
+10
+10,0xFFAB
+0
+10
+*/

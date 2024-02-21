@@ -31,6 +31,7 @@ char	*load_map(int fd)
     
 	return (NULL);
 }
+
 char	*validate_file(char *file_name)
 {
 	char	*type_extension;

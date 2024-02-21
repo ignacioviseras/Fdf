@@ -23,7 +23,9 @@ SRCS			=	get_next_line.c \
 BASICS_SRC		=	ft_atoi.c \
 					ft_bzero.c \
 					ft_calloc.c \
+					ft_memcpy.c \
 					ft_memset.c \
+					ft_realloc.c \
 					ft_split.c \
 					ft_strchr.c \
 					ft_strdup.c \
