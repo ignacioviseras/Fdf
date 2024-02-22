@@ -12,24 +12,30 @@
 
 #include "fdf.h"
 
-char	*load_map(int fd)
+char	***load_map(int fd)
 {
 	char	*file_content;
-	char 	***map;
+	char 	**map;
+	// int		x;
 
 	// int ***map;
 	file_content = "";
-	while (file_content != NULL)
-	{
-		file_content = get_next_line(fd);
-		***map = struct_map(file_content);
-		ft_strjoin(***map, file_content);
-		free(file_content);
-	}
-	free(file_content);
+	file_content = get_next_line(fd);
+	map = struct_map(file_content, ' ');
+	printf("'%s'\n", *map);
+
+	// x = 0;
+	// while (file_content != NULL)
+	// {
+	// 	file_content = get_next_line(fd);
+	// 	*map = struct_map(file_content, ' ');
+	// 	// ft_realloc(file_content, x++);
+	// 	// printf("%s", **map);
+	// }
 	close(fd);
-    
+	
 	return (NULL);
+	// return (map);
 }
 
 char	*validate_file(char *file_name)
@@ -69,8 +75,8 @@ int	main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
-		ft_printf("accede%s\n", argv[1]);
 		validate_file(argv[1]);
+		// system("leaks fdf");
 	}
 	else
 	{

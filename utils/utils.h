@@ -59,4 +59,7 @@ int		ft_print_int(int n);
 int		ft_print_hex(unsigned long long n, char *baseFormat);
 int		ft_print_pointer(unsigned long long n);
 
+char    ***load_map(int fd);
+char    **struct_map(char *line, int c);
+
 #endif

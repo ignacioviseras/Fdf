@@ -24,7 +24,6 @@
 void	parsing();
 void	extract_content();
 void	insert_matrix(char *str);
-char     *load_map(int fd);
 
 
 #endif

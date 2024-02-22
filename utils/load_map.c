@@ -49,7 +49,7 @@ static int	n_colum(char const *s, char c)
 4   c   o   m   o
 5   e   s   t   a
 
-    0   1   2   3   +1 para el \0
+    0   1   2   3   +1 para el \0         ' '
 0	0	0	10	10
 1
 2
@@ -73,23 +73,28 @@ map[0] = hola
 map = valor
 */
 
-char    ***struct_map(char *line, int c)
+char    **struct_map(char *line, int c)
 {
     int i;
-    int x;
-    int y;
+    // int x;
+    // int y;
     char    **line_extract;
-    char    ***map;
+    char    **map;
+	
 
-	**map = ft_calloc(n_colum(line, c) + 1, sizeof(char *));
+	i = 0;
+	map = NULL;
+	map = ft_calloc(n_colum(line, c) + 1, sizeof(char *));
+	if (!map)
+		return (NULL);	
     line_extract = ft_split(line, ' ');
-    while (*line_extract)
+    while (line_extract[i])
     {
-        **map = ft_strdup(*line_extract);
-		**map++;
-        *line_extract++;
+        map[i] = ft_strdup(line_extract[i]);
+        i++;
     }
-	return(***map);
+	free_all(line_extract);
+	return(map);
 }
 
 /*

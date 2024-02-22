@@ -19,8 +19,10 @@ BASICS   	  	=	$(addprefix $(PATH_BASICS), $(BASICS_SRC))
 PRINTF	     	=	$(addprefix $(PATH_PRINTF), $(PRINTF_SRC))
 
 SRCS			=	get_next_line.c \
+					load_map.c \
 
-BASICS_SRC		=	ft_atoi.c \
+BASICS_SRC		=	free_all.c \
+					ft_atoi.c \
 					ft_bzero.c \
 					ft_calloc.c \
 					ft_memcpy.c \
