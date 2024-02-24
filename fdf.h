@@ -20,6 +20,11 @@
 # include "./colors/colors.h"
 # include "./utils/utils.h"
 
+// typedef struct pixel
+// {
+// 	int	value;
+// 	int color;
+// } t_pixel;
 
 void	parsing();
 void	extract_content();

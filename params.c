@@ -15,14 +15,48 @@
 char	***load_map(int fd)
 {
 	char	*file_content;
-	char 	**map;
-	// int		x;
+	t_pixel 	**map;
+	int		x;
+	int		j;
 
-	// int ***map;
-	file_content = "";
-	file_content = get_next_line(fd);
-	map = struct_map(file_content, ' ');
-	printf("'%s'\n", *map);
+	x = 0;
+	j = 0;
+	file_content= "";
+	while (file_content != NULL)
+	{
+		// printf("accedeMain\n");
+
+		file_content = get_next_line(fd);
+		map = struct_map(file_content, ' ', x);
+		printf("iteracion-Num->%i\n", x);
+		while (j < 3)
+		{
+			printf("'%d'", map[x][j].value);
+			j++;
+			printf("j-Num->%i\n", j);
+
+		}
+		printf("\n");
+		j=0;
+		x++;
+		// ft_realloc(map, x);
+	}
+	
+	
+	// while (*map != NULL)
+	// {
+		// 	printf("asd->'%d'", *map->value);
+		// 	map++;
+	// }
+	
+
+	
+	close(fd);
+	printf("CANCER\n");
+	
+	return (NULL);
+	// return (map);
+}
 
 	// x = 0;
 	// while (file_content != NULL)
@@ -32,11 +66,6 @@ char	***load_map(int fd)
 	// 	// ft_realloc(file_content, x++);
 	// 	// printf("%s", **map);
 	// }
-	close(fd);
-	
-	return (NULL);
-	// return (map);
-}
 
 char	*validate_file(char *file_name)
 {

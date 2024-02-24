@@ -24,7 +24,7 @@ static char	*extract(char *buffer)
 	len_sentence = 0;
 	len_all = ft_strlen(buffer);
 	len_sentence = ft_strlen(ft_strchr(buffer, '\n'));
-	sentence = ft_substr(buffer, 0, len_all - len_sentence + 1);
+	sentence = ft_substr(buffer, 0, len_all - len_sentence);
 	return (sentence);
 }
 

@@ -14,11 +14,11 @@
 
 static int	n_colum(char const *s, char c)
 {
-	int	words;
+	int	colum;
 	int	index;
 
 	index = 0;
-	words = 0;
+	colum = 0;
 	index = 0;
 	if (!s)
 		return (0);
@@ -30,14 +30,14 @@ static int	n_colum(char const *s, char c)
 		{
 			while (s[index] && s[index] == c)
 				index++;
-			words++;
+			colum++;
 		}
 		else
 			index++;
 	}
 	if (s[index - 1] && s[index - 1] != c)
-		words++;
-	return (words);
+		colum++;
+	return (colum);
 }
 
 /*
@@ -56,6 +56,7 @@ static int	n_colum(char const *s, char c)
 3
 4
 */
+
 /*
 1
 2
@@ -73,34 +74,43 @@ map[0] = hola
 map = valor
 */
 
-char    **struct_map(char *line, int c)
+t_pixel    **struct_map(char *line, int c, int map_pos)
 {
     int i;
-    // int x;
-    // int y;
     char    **line_extract;
-    char    **map;
+    t_pixel  **map;
+	char	**extract_color;
 	
-
+	
 	i = 0;
-	map = NULL;
-	map = ft_calloc(n_colum(line, c) + 1, sizeof(char *));
+	// printf("FT_accede\n");
+	map = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel *));
 	if (!map)
 		return (NULL);	
     line_extract = ft_split(line, ' ');
     while (line_extract[i])
     {
-        map[i] = ft_strdup(line_extract[i]);
-        i++;
+		//este if no funca
+		if (ft_strchr(line_extract[i], ','))
+		{
+			printf("accede111111\n");
+			extract_color = ft_split(line_extract[i], ',');
+			map[i]->value = ft_atoi(extract_color[0]);
+			map[i]->color = atoi_base(extract_color[1]+2, 16);
+			free(extract_color);
+			i++;
+		}
+		else
+		{
+			// printf("accede22222\n");
+			map[map_pos] = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel *));
+			map[map_pos][i].value = ft_atoi(line_extract[i]);
+			map[map_pos][i].color = 0xFFFFFF;
+			printf("(%i)\n", map[map_pos][i].value);
+
+			i++;
+		}
     }
 	free_all(line_extract);
 	return(map);
 }
-
-/*
-0
-10
-10,0xFFAB
-0
-10
-*/
