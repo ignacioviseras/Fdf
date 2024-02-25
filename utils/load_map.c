@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/25 20:20:17 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:34:35 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,8 @@ t_pixel    **struct_map(t_pixel **map, char *line, int c, int map_pos)
 		//este if no funca
 		if (ft_strchr(line_extract[i], ','))
 		{
-			printf("accede111111\n");
-			printf("%i\n", ft_atoi(line_extract[i]));
-			// extract_color = ft_split(line_extract[i], ',');
 			map[map_pos][i].value = ft_atoi(line_extract[i]);
-			// map[i]->color = atoi_base(ft_strchr(extract_color[1]+3), 16);
-			map[map_pos][i].color = 0xFFFFFF;
-			
-			// free(extract_color);
+			map[map_pos][i].color = atoi_base(ft_strchr(line_extract[i], ',')+1, 16);
 		}
 		else
 		{
