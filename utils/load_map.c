@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 22:12:47 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:20:17 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,42 +74,42 @@ map[0] = hola
 map = valor
 */
 
-t_pixel    **struct_map(char *line, int c, int map_pos)
+t_pixel    **struct_map(t_pixel **map, char *line, int c, int map_pos)
 {
     int i;
     char    **line_extract;
-    t_pixel  **map;
-	char	**extract_color;
+    // t_pixel  **map;
+	// char	**extract_color;
 	
 	
-	i = 0;
 	// printf("FT_accede\n");
-	map = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel *));
-	if (!map)
+	map[map_pos] = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel));
+	if (!map[map_pos])
 		return (NULL);	
     line_extract = ft_split(line, ' ');
+	i = 0;
     while (line_extract[i])
     {
 		//este if no funca
 		if (ft_strchr(line_extract[i], ','))
 		{
 			printf("accede111111\n");
-			extract_color = ft_split(line_extract[i], ',');
-			map[i]->value = ft_atoi(extract_color[0]);
-			map[i]->color = atoi_base(extract_color[1]+2, 16);
-			free(extract_color);
-			i++;
+			printf("%i\n", ft_atoi(line_extract[i]));
+			// extract_color = ft_split(line_extract[i], ',');
+			map[map_pos][i].value = ft_atoi(line_extract[i]);
+			// map[i]->color = atoi_base(ft_strchr(extract_color[1]+3), 16);
+			map[map_pos][i].color = 0xFFFFFF;
+			
+			// free(extract_color);
 		}
 		else
 		{
 			// printf("accede22222\n");
-			map[map_pos] = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel *));
 			map[map_pos][i].value = ft_atoi(line_extract[i]);
 			map[map_pos][i].color = 0xFFFFFF;
-			printf("(%i)\n", map[map_pos][i].value);
-
-			i++;
+			// printf("(%i)\n", map[map_pos][i].value);
 		}
+			i++;
     }
 	free_all(line_extract);
 	return(map);

@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/20 17:35:25 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/25 17:59:40 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,7 @@ MLX_SRC 	=	./mlx/
 MLX_OBJS	=	$(addprefix $(MLX_SRC), *.o)
 MLX     	=	$(addprefix $(MLX_SRC), $(MLX_A))
 
-SRCS	=	main.c \
-			generate.c \
+SRCS	=	generate.c \
 			parsing.c \
 			params.c \
 			

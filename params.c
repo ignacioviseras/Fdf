@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 22:15:21 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:28:25 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,41 +21,27 @@ char	***load_map(int fd)
 
 	x = 0;
 	j = 0;
-	file_content= "";
-	while (file_content != NULL)
+	map = NULL;
+	while (1)
 	{
-		// printf("accedeMain\n");
-
+		map = ft_realloc(map, (2 + x) * sizeof(t_pixel *));
+		if (!map)
+			return (NULL);	
 		file_content = get_next_line(fd);
-		map = struct_map(file_content, ' ', x);
-		printf("iteracion-Num->%i\n", x);
-		while (j < 3)
+		if (!file_content)
+			break;
+		map = struct_map(map, file_content, ' ', x);
+		while (j < 500)
 		{
 			printf("'%d'", map[x][j].value);
 			j++;
-			printf("j-Num->%i\n", j);
-
 		}
 		printf("\n");
 		j=0;
 		x++;
-		// ft_realloc(map, x);
 	}
-	
-	
-	// while (*map != NULL)
-	// {
-		// 	printf("asd->'%d'", *map->value);
-		// 	map++;
-	// }
-	
-
-	
 	close(fd);
-	printf("CANCER\n");
-	
 	return (NULL);
-	// return (map);
 }
 
 	// x = 0;
@@ -100,17 +86,22 @@ char	*validate_file(char *file_name)
 /*
 	Program main
 */
-int	main(int argc, char **argv)
+// int	main(int argc, char **argv)
+// {
+// 	if (argc == 2)
+// 	{
+// 		validate_file(argv[1]);
+// 		// system("leaks fdf");
+// 	}
+// 	else
+// 	{
+// 		ft_printf("#########  Error  #########\n");
+// 		ft_printf("The program need only 2 params\n");
+// 		return (0);
+// 	}
+// }
+
+int	main()
 {
-	if (argc == 2)
-	{
-		validate_file(argv[1]);
-		// system("leaks fdf");
-	}
-	else
-	{
-		ft_printf("#########  Error  #########\n");
-		ft_printf("The program need only 2 params\n");
-		return (0);
-	}
+	validate_file("maps/julia.fdf");
 }

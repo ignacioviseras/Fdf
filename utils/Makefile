@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME			=	utils.a
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g3
 
 PATH_BASICS 	=	./basics/
 PATH_PRINTF 	=	./printf/

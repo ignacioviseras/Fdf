@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 17:52:21 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:00:13 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 void	parsing();
 void	extract_content();
 void	insert_matrix(char *str);
+char	***load_map(int fd);
+
 
 
 #endif
