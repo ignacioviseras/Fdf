@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/27 21:16:24 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:48:22 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 char	***load_map(int fd)
 {
 	char	*file_content;
-	t_pixel 	**map;
+	t_pixel	**map;
 	int		x;
 	int		j;
 
 	x = 0;
 	j = 0;
-	// map = NULL;
-	// if(!map)
-		map = ft_calloc((2 + x) * sizeof(t_pixel *), sizeof(t_pixel *));
+	map = ft_calloc((2 + x) * sizeof(t_pixel *), sizeof(t_pixel *));
 	while (1)
 	{
 		if (map)
 			map = ft_realloc(map, (2 + x) * sizeof(t_pixel *));
-		// 	free(map);
 		if (!map)
-			return (NULL);	
+			return (NULL);
 		file_content = get_next_line(fd);
 		if (!file_content)
-			break;
+			break ;
 		map = struct_map(map, file_content, ' ', x);
 		while (j < 3)
 		{
@@ -42,36 +39,35 @@ char	***load_map(int fd)
 		}
 		free(file_content);
 		printf("\n");
-		j=0;
+		j = 0;
 		x++;
 	}
 	close(fd);
 	return (NULL);
 }
 
-	// x = 0;
-	// while (file_content != NULL)
-	// {
-	// 	file_content = get_next_line(fd);
-	// 	*map = struct_map(file_content, ' ');
-	// 	// ft_realloc(file_content, x++);
-	// 	// printf("%s", **map);
-	// }
+// x = 0;
+// while (file_content != NULL)
+// {
+// 	file_content = get_next_line(fd);
+// 	*map = struct_map(file_content, ' ');
+// 	// ft_realloc(file_content, x++);
+// 	// printf("%s", **map);
+// }
 
-char	*validate_file(char *file_name)
+char	*validate_file(char *fl_name)
 {
-	char	*type_extension;
-	int		len_extension;
-	int		len_file;
+	char	*tp_extension;
+	int		l_extension;
+	int		len_fl;
 	int		fd;
 
-	type_extension = ".fdf";
-	len_file = ft_strlen(file_name);
-	len_extension = len_file - 4;
-	if (ft_strcmp(file_name + len_extension, type_extension) == 0
-		&& len_file > 4)
+	tp_extension = ".fdf";
+	len_fl = ft_strlen(fl_name);
+	l_extension = len_fl - 4;
+	if (ft_strcmp(fl_name + l_extension, tp_extension) == 0 && len_fl > 4)
 	{
-		fd = open(file_name, O_RDONLY);
+		fd = open(fl_name, O_RDONLY);
 		if (fd < 0 || BUFFER_SIZE <= 0)
 		{
 			ft_printf("### Error en la lectura ###\n");
@@ -106,7 +102,7 @@ char	*validate_file(char *file_name)
 // 	}
 // }
 
-int	main()
+int	main(void)
 {
 	validate_file("maps/qwe.fdf");
 	// system("leaks fdf");

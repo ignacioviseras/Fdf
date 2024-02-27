@@ -6,19 +6,18 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:26:30 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/20 17:25:23 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:47:53 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "fdf.h"
-
 
 // void	insert_matrix(char *str)
 // {
 // 	// char **aux;
 // 	// char **matrix;
 // 	t_map mapa;
-	
+
 // 	//aux = matrix;
 // 	//*matrix = str;
 // 	//matrix++;
@@ -27,7 +26,7 @@
 // 	// printf("insert_matrix\n%s", *aux);
 // }
 
-// void	extract_content()
+// void	extract_content(void)
 // {
 // 	char file[] = "./maps/42.fdf";
 // 	int fd;
@@ -51,9 +50,7 @@
 // 	close(fd);
 // }
 
-
-
-// // void	parsing()
+// // void	parsing(void)
 // // {
 // // 	extract_content
 // // }
@@ -62,7 +59,7 @@
 // 	system("leaks fdf");
 // }
 
-// int	main()
+// int	main(void)
 // {
 // 	atexit(leaks);
 // 	extract_content();
@@ -100,4 +97,3 @@
 // 	system("leaks a.out");
 // 	return (0);
 // }
-

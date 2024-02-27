@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/02/08 19:55:17 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/16 18:24:35 by igvisera         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 21:24:50 by igvisera          #+#    #+#             */
+/*   Updated: 2024/02/27 21:24:50 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +35,7 @@
 
 typedef struct pixel
 {
-	int	value;
+	int value;
 	int color;
 } t_pixel;
 

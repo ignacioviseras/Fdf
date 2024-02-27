@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:44:01 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/17 14:44:52 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:22:07 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../utils.h"
+#include "../utils.h"
 
 int	ft_elemts(char const *str, va_list args)
 {

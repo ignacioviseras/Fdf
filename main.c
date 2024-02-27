@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:43:36 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/15 19:37:07 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:49:12 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // int main(int argc, char *argv[])
 // {
 //     char *file;
-    
+
 //     if (argc != 2)
 //         return (0);
 //     else
@@ -28,7 +28,6 @@
 //         // printf("%s", argv[1]);
 //     return (0);
 // }
-
 
 //-------------------pintamos una lilnea de pixeles-------------------
 // int	main(void)
@@ -54,10 +53,6 @@
 // 	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 //     mlx_loop(mlx);
 // }
-
-
-
-
 
 // void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // {
