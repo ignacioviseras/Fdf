@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/25 20:28:25 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:16:24 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,26 @@ char	***load_map(int fd)
 
 	x = 0;
 	j = 0;
-	map = NULL;
+	// map = NULL;
+	// if(!map)
+		map = ft_calloc((2 + x) * sizeof(t_pixel *), sizeof(t_pixel *));
 	while (1)
 	{
-		map = ft_realloc(map, (2 + x) * sizeof(t_pixel *));
+		if (map)
+			map = ft_realloc(map, (2 + x) * sizeof(t_pixel *));
+		// 	free(map);
 		if (!map)
 			return (NULL);	
 		file_content = get_next_line(fd);
 		if (!file_content)
 			break;
 		map = struct_map(map, file_content, ' ', x);
-		while (j < 500)
+		while (j < 3)
 		{
-			printf("'%d'", map[x][j].value);
+			printf("%d ", map[x][j].value);
 			j++;
 		}
+		free(file_content);
 		printf("\n");
 		j=0;
 		x++;
@@ -103,5 +108,6 @@ char	*validate_file(char *file_name)
 
 int	main()
 {
-	validate_file("maps/julia.fdf");
+	validate_file("maps/qwe.fdf");
+	// system("leaks fdf");
 }

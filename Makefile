@@ -6,15 +6,15 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/02/25 17:59:40 by igvisera         ###   ########.fr        #
+#    Updated: 2024/02/27 20:52:52 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
 # CFLAGS	=	-Wall -Wextra -g3 
 # CFLAGS	=	-Wall -Wextra -Werror -g3 
-# CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS	=	-Wall -Wextra -g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
+# CFLAGS	=	-Wall -Wextra -g3 -fsanitize=address
 
 #STRUCT	=	-lmlx -framework OpenGL -framework AppKit
 

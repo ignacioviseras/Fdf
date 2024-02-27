@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME			=	utils.a
-CFLAGS			=	-Wall -Wextra -Werror -g3
+CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 PATH_BASICS 	=	./basics/
 PATH_PRINTF 	=	./printf/

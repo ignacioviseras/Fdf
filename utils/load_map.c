@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/25 20:34:35 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:52:40 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,8 @@ t_pixel    **struct_map(t_pixel **map, char *line, int c, int map_pos)
     int i;
     char    **line_extract;
     // t_pixel  **map;
-	// char	**extract_color;
 	
 	
-	// printf("FT_accede\n");
 	map[map_pos] = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel));
 	if (!map[map_pos])
 		return (NULL);	
@@ -98,12 +96,10 @@ t_pixel    **struct_map(t_pixel **map, char *line, int c, int map_pos)
 		}
 		else
 		{
-			// printf("accede22222\n");
 			map[map_pos][i].value = ft_atoi(line_extract[i]);
 			map[map_pos][i].color = 0xFFFFFF;
-			// printf("(%i)\n", map[map_pos][i].value);
 		}
-			i++;
+		i++;
     }
 	free_all(line_extract);
 	return(map);

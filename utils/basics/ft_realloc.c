@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:04:05 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/25 19:10:44 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:51:03 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void *ft_realloc(void *ptr, size_t len)
         return (free(ptr), NULL);
     new_ptr = ft_calloc(1, len);
     if (!new_ptr)
+    {
+        free(ptr);
         return (NULL);
+    }
     if (ptr)
 	{
         ft_memcpy(new_ptr, ptr, len);
