@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:44:45 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/27 21:22:49 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/02 23:47:21 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
 
-void	**free_all(char **str)
+void	free_all(void **str)
 {
-	int	i;
+	void **pointer_pos;
 
-	i = 0;
-	while (str[i])
+	pointer_pos = str;
+	while (*str)
 	{
-		free(str[i]);
-		i++;
+		free(*str);
+		str++;
 	}
-	return (free(str), NULL);
+	free(pointer_pos);
 }

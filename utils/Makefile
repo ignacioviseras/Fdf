@@ -38,6 +38,7 @@ BASICS_SRC		=	free_all.c \
 					ft_substr.c \
 					ft_strcmp.c \
 					atoi_base.c \
+					map_realloc.c \
 
 PRINTF_SRC		=	ft_printf.c \
 					ft_printNumbers.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/27 21:50:47 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/03 00:00:32 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,12 @@
 # include "./colors/colors.h"
 # include "./utils/utils.h"
 # include <stdio.h>
+# include <string.h>
 # include <stdlib.h>
-
-// typedef struct pixel
-// {
-// 	int	value;
-// 	int color;
-// } t_pixel;
 
 void	parsing(void);
 void	extract_content(void);
 void	insert_matrix(char *str);
-char	***load_map(int fd);
+t_pixel	**load_map(int fd);
 
 #endif

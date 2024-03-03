@@ -62,7 +62,7 @@ char	**ft_split(char const *s, char c)
 			len_word = ft_strchr(s, c) - s;
 		str[i] = ft_substr(s, 0, len_word);
 		if (!str[i++])
-			return (free_all(str), NULL);
+			return (free_all((void **) str), NULL);
 		s += len_word;
 	}
 	return (str[i] = NULL, str);

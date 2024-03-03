@@ -40,13 +40,14 @@ typedef struct pixel
 } t_pixel;
 
 int	atoi_base(const char *str, int str_base);
-void	**free_all(char **str);
+void	free_all(void **str);
 int	ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
-void	*ft_realloc(void *ptr, size_t len);
+void	**ft_realloc(void **ptr, size_t len);
+t_pixel	**map_realloc(t_pixel **ptr, size_t len);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
 int	ft_strcmp(const char *s1, const char *s2);
@@ -65,7 +66,6 @@ int	ft_print_unsigned(unsigned int n);
 int	ft_print_int(int n);
 int	ft_print_hex(unsigned long long n, char *baseFormat);
 int	ft_print_pointer(unsigned long long n);
-char	***load_map(int fd);
 t_pixel	**struct_map(t_pixel **map, char *line, int c, int map_pos);
 
 #endif

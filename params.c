@@ -3,56 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   params.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/27 21:48:22 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/03 17:23:45 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char	***load_map(int fd)
+t_pixel	**load_map(int fd)
 {
 	char	*file_content;
 	t_pixel	**map;
 	int		x;
-	int		j;
 
 	x = 0;
-	j = 0;
-	map = ft_calloc((2 + x) * sizeof(t_pixel *), sizeof(t_pixel *));
+	map = ft_calloc((2 + x), sizeof(t_pixel *));
 	while (1)
 	{
-		if (map)
-			map = ft_realloc(map, (2 + x) * sizeof(t_pixel *));
-		if (!map)
-			return (NULL);
 		file_content = get_next_line(fd);
 		if (!file_content)
 			break ;
+		if (map)
+			map = map_realloc(map, (2 + x) * sizeof(t_pixel *));
+		if (!map)
+			return (NULL);
 		map = struct_map(map, file_content, ' ', x);
-		while (j < 3)
-		{
-			printf("%d ", map[x][j].value);
-			j++;
-		}
 		free(file_content);
-		printf("\n");
-		j = 0;
 		x++;
 	}
 	close(fd);
+	free(*map);
+	free(map);
+	// esto retorna map cuado se termine el programa se tendria que liberar map
+	// free_all((void **) map);
 	return (NULL);
 }
 
-// x = 0;
-// while (file_content != NULL)
+// int		size_map() {
+	
+// 	return (size_map);
+// }
+
+// char	***load_map(int fd)
 // {
-// 	file_content = get_next_line(fd);
-// 	*map = struct_map(file_content, ' ');
-// 	// ft_realloc(file_content, x++);
-// 	// printf("%s", **map);
+// 	char	*file_content;
+// 	t_pixel	**map;
+// 	int		x;
+
+// 	x = 0;
+// 	map = ft_calloc((2 + x) * sizeof(t_pixel *), sizeof(t_pixel *));
+// 	while (1)
+// 	{
+// 		if (map)
+// 			map = ft_realloc(map, (2 + x) * sizeof(t_pixel *));
+// 		if (!map)
+// 			return (NULL);
+// 		file_content = get_next_line(fd);
+// 		if (!file_content)
+// 			break ;
+// 		map = struct_map(map, file_content, ' ', x);
+// 		free(file_content);
+// 		x++;
+// 	}
+// 	close(fd);
+// 	return (NULL);
 // }
 
 char	*validate_file(char *fl_name)

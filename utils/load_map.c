@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/02/27 21:26:08 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/03 17:26:12 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,6 @@ static int	n_colum(char const *s, char c)
 4
 */
 
-/*
-1
-2
-3
-4
-5
-6
-7
-[0][0][0]valor
-[0][0][1]color
-map[0] = hola
-***map = fila
-**map = columna
-*map = {q, color}
-map = valor
-*/
-
 t_pixel	**struct_map(t_pixel **map, char *line, int c, int map_pos)
 {
 	int		i;
@@ -99,6 +82,6 @@ t_pixel	**struct_map(t_pixel **map, char *line, int c, int map_pos)
 		}
 		i++;
 	}
-	free_all(line_extract);
+	free_all((void **)line_extract);
 	return (map);
 }
