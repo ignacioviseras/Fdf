@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/03 17:23:45 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/03 17:48:40 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ t_pixel	**load_map(int fd)
 			map = map_realloc(map, (2 + x) * sizeof(t_pixel *));
 		if (!map)
 			return (NULL);
-		map = struct_map(map, file_content, ' ', x);
+		map[x] = struct_map(file_content, ' ');
 		free(file_content);
 		x++;
 	}
 	close(fd);
-	free(*map);
-	free(map);
 	// esto retorna map cuado se termine el programa se tendria que liberar map
-	// free_all((void **) map);
+	printf("'%i'\n", map[0][0].value);
+	free_all((void **) map);
 	return (NULL);
 }
 

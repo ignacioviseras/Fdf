@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/03 17:26:12 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/03 17:46:44 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ static int	n_colum(char const *s, char c)
 4
 */
 
-t_pixel	**struct_map(t_pixel **map, char *line, int c, int map_pos)
+t_pixel	*struct_map(char *line, int c)
 {
 	int		i;
 	char	**line_extract;
+	t_pixel	*map;
 
-	map[map_pos] = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel));
-	if (!map[map_pos])
+	map = ft_calloc(n_colum(line, c) + 1, sizeof(t_pixel));
+	if (!map)
 		return (NULL);
 	line_extract = ft_split(line, ' ');
 	i = 0;
@@ -71,17 +72,16 @@ t_pixel	**struct_map(t_pixel **map, char *line, int c, int map_pos)
 	{
 		if (ft_strchr(line_extract[i], ','))
 		{
-			map[map_pos][i].value = ft_atoi(line_extract[i]);
-			map[map_pos][i].color = atoi_base(ft_strchr(line_extract[i], ',')
+			map[i].value = ft_atoi(line_extract[i]);
+			map[i].color = atoi_base(ft_strchr(line_extract[i], ',')
 					+ 1, 16);
 		}
 		else
 		{
-			map[map_pos][i].value = ft_atoi(line_extract[i]);
-			map[map_pos][i].color = 0xFFFFFF;
+			map[i].value = ft_atoi(line_extract[i]);
+			map[i].color = 0xFFFFFF;
 		}
 		i++;
 	}
-	free_all((void **)line_extract);
-	return (map);
+	return (free_all((void **)line_extract), map);
 }

@@ -66,6 +66,6 @@ int	ft_print_unsigned(unsigned int n);
 int	ft_print_int(int n);
 int	ft_print_hex(unsigned long long n, char *baseFormat);
 int	ft_print_pointer(unsigned long long n);
-t_pixel	**struct_map(t_pixel **map, char *line, int c, int map_pos);
+t_pixel	*struct_map(char *line, int c);
 
 #endif
