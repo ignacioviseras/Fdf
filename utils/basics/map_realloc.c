@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_realloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:47:25 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/03 16:58:04 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:46:14 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ t_pixel	**map_realloc(t_pixel **ptr, size_t len)
 		free(*ptr);
 		return (NULL);
 	}
-	if (*ptr)
+	if (ptr[0])
 	{
-		while (x < sizeof(ptr) / sizeof(t_pixel))
+		printf("lu-%lu\n", x);
+		while (ptr[x])
+		// while (x < sizeof(ptr) / sizeof(t_pixel))
 		{
+			printf("lOOP-%lu\n", x);
 			new_ptr[x] = ptr[x];
 			x++;
 		}

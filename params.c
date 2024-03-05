@@ -3,23 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   params.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/03 17:48:40 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:06:11 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int validate_map(t_pixel **map, int map_long)
+{
+	int n_columns;
+	int x;
+
+	x = 0;
+	n_columns = map[0][0].number_col;
+	// printf("%i longma \n", map_long);
+	// printf("%i n_col \n", n_columns);
+
+	while (x < map_long)
+	{
+		// printf("iteracion %i, %i n_col \n", x, map[x][0].number_col);
+
+		if(n_columns != map[x][0].number_col)
+		{
+			printf("mapa de distinto tamaño\n");
+			return (0);
+		}
+		x++;
+	}
+	printf("esta perfe\n");
+	return (1);
+}
 
 t_pixel	**load_map(int fd)
 {
 	char	*file_content;
 	t_pixel	**map;
 	int		x;
-
 	x = 0;
-	map = ft_calloc((2 + x), sizeof(t_pixel *));
+	map = ft_calloc(2, sizeof(t_pixel *));
+	if (!map)
+			return (NULL);
 	while (1)
 	{
 		file_content = get_next_line(fd);
@@ -35,7 +61,17 @@ t_pixel	**load_map(int fd)
 	}
 	close(fd);
 	// esto retorna map cuado se termine el programa se tendria que liberar map
-	printf("'%i'\n", map[0][0].value);
+	printf("'%i'", map[0][0].value);
+	printf("'%i'", map[0][1].value);
+	printf("'%i'\n", map[0][2].value);
+	printf("'%i'", map[1][0].value);
+	printf("'%i'", map[1][1].value);
+	printf("'%i'\n", map[1][2].value);
+	//---------------------
+	printf("NUMEE'%i'\n", map[0][0].number_col);
+	printf("NUMEE'%i'\n", map[1][0].number_col);
+	if (validate_map(map, x) == 0)
+		return(free_all((void **) map), NULL);
 	free_all((void **) map);
 	return (NULL);
 }

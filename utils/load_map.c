@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/03 17:46:44 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:47:31 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,22 @@ t_pixel	*struct_map(char *line, int c)
 	if (!map)
 		return (NULL);
 	line_extract = ft_split(line, ' ');
-	i = 0;
-	while (line_extract[i])
+	i = -1;
+	while (line_extract[++i])
 	{
 		if (ft_strchr(line_extract[i], ','))
 		{
 			map[i].value = ft_atoi(line_extract[i]);
 			map[i].color = atoi_base(ft_strchr(line_extract[i], ',')
 					+ 1, 16);
+			
 		}
 		else
 		{
 			map[i].value = ft_atoi(line_extract[i]);
 			map[i].color = 0xFFFFFF;
 		}
-		i++;
 	}
+	map[0].number_col = i - 1;
 	return (free_all((void **)line_extract), map);
 }
