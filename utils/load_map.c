@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/05 21:47:31 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:37:05 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ t_pixel	*struct_map(char *line, int c)
 			map[i].value = ft_atoi(line_extract[i]);
 			map[i].color = atoi_base(ft_strchr(line_extract[i], ',')
 					+ 1, 16);
-			
 		}
 		else
 		{
