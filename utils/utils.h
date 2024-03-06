@@ -38,6 +38,7 @@ typedef struct pixel
 	int value;
 	int color;
 	int number_col;
+	int number_row;
 } t_pixel;
 
 int	atoi_base(const char *str, int str_base);

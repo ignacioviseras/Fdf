@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/06 15:31:10 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:24:05 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_pixel	**load_map(int fd)
 		x++;
 	}
 	close(fd);
+	map[0]->number_row = x;
 	if (validate_map(map, x) == 0)
 		return (free_all((void **)map), NULL);
 	return (map);// esto retorna map cuado se termine el programa se tendria que liberar map

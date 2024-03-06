@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/03/06 14:41:52 by igvisera         ###   ########.fr        #
+#    Updated: 2024/03/06 19:20:07 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME	=	fdf
 CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS	=	-Wall -Wextra -g3 -fsanitize=address
 
-#STRUCT	=	-lmlx -framework OpenGL -framework AppKit
+STRUCT	=	-lmlx -framework OpenGL -framework AppKit
 
 UTILS_A		=	utils.a
 UTILS_SRC 	=	./utils/
@@ -31,7 +31,8 @@ MLX     	=	$(addprefix $(MLX_SRC), $(MLX_A))
 SRCS	=	generate.c \
 			parsing.c \
 			params.c \
-			main.c \
+			draw_map.c \
+			# main.c \
 			
 
 OBJS	=	${SRCS:.c=.o}
@@ -39,8 +40,8 @@ OBJS	=	${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(UTILS) $(OBJS)
-	 gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME)
-#	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
+#  	gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)
