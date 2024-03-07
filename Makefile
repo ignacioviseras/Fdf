@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
+#    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/03/06 19:20:07 by igvisera         ###   ########.fr        #
+#    Updated: 2024/03/07 15:23:50 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ NAME	=	fdf
 CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS	=	-Wall -Wextra -g3 -fsanitize=address
 
-STRUCT	=	-lmlx -framework OpenGL -framework AppKit
+# STRUCT	=	-lmlx -framework OpenGL -framework AppKit
+# STRUCT			= -lmlx -lXext -lX11 -lm
+STRUCT			= -Imlx_linux -lXext -lX11 -lm -lz
+
 
 UTILS_A		=	utils.a
 UTILS_SRC 	=	./utils/
@@ -41,7 +44,7 @@ all: $(NAME)
 
 $(NAME): $(UTILS) $(OBJS)
 #  	gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME)
-	gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)

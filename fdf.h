@@ -3,30 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/07 13:09:40 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:33:30 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include <mlx.h>
+// # include <mlx.h>
+# include "./mlx_linux/mlx.h"
 # include "./colors/colors.h"
-# include "./events/key_dictionary.h"
+# include "./events/linux_key_dictorionary.h"
+// # include "./events/mac_key_dictionary.h"
 # include "./utils/utils.h"
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
 
 # ifndef WIDTH_WIN
-#  define WIDTH_WIN 1000
+#  define WIDTH_WIN 500
 # endif
 
 # ifndef HEIGHT_WIN
-#  define HEIGHT_WIN 1000
+#  define HEIGHT_WIN 500
 # endif
 
 typedef struct	s_data {
