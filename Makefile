@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/03/07 15:23:50 by igvisera         ###   ########.fr        #
+#    Updated: 2024/03/07 15:46:35 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ all: $(NAME)
 
 $(NAME): $(UTILS) $(OBJS)
 #  	gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME)
+# gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
 	gcc $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
 
 $(UTILS):

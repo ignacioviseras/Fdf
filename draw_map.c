@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/07 13:15:31 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:52:15 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,25 @@
 //     // return (free_all((void **)map), 0);
 // }
 
+void pixel_put(t_img *img, int x, int y, int color)
+{
+    int offset;
+
+    offset = (img->line_length * y) + (x * (img->bits_per_pixel / 8));
+    *((unsigned int *)(offset + img->img_pixel_ptr)) = color;
+}
+
 void    screen_pixels(t_window *window, int color)
 {
     for ( int y = HEIGHT_WIN * 0.1; y < HEIGHT_WIN * 0.9; ++y)
     {
         for ( int x = WIDTH_WIN * 0.1; x < WIDTH_WIN * 0.9; ++x)
         {
-            mlx_pixel_put(window->mlx, window->win, x, y, color);
+            pixel_put(&window->img, x, y, color);
         }
     }
 }
 
-// int f(int keysym, t_window *data)
 int f(int keysym, t_window *window)
 {
     printf("tecla pulsada %i\n", keysym);
@@ -49,21 +56,22 @@ int f(int keysym, t_window *window)
         screen_pixels(window, 0xff00ff);
     else if (keysym == ESC)//    salimos
         exit(1);
+    mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0, 0);
     return (0);
 }
 
 int main(void)
 {
     t_window window;
-    // t_data img;
-    // img.img = mlx_new_image(mlx, WIDTH_WIN, HEIGHT_WIN);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							&img.endian);
 
     window.mlx = mlx_init();
     window.win = mlx_new_window(window.mlx, WIDTH_WIN, HEIGHT_WIN, "Fdf");
+    
+    window.img.img_ptr = mlx_new_image(window.mlx, WIDTH_WIN, HEIGHT_WIN);
+	window.img.img_pixel_ptr = mlx_get_data_addr(window.img.img_ptr , &window.img.bits_per_pixel, &window.img.line_length,
+								&window.img.endian);
     mlx_key_hook(window.win, f, &window);
     mlx_loop(window.mlx);
     return (0);
-    // return (free_all((void **)map), 0);
+    // return (free_all((void **)map), 0); culo
 }

@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/07 15:33:30 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:53:10 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,25 @@
 # include <stdlib.h>
 
 # ifndef WIDTH_WIN
-#  define WIDTH_WIN 500
+#  define WIDTH_WIN 1000
 # endif
 
 # ifndef HEIGHT_WIN
-#  define HEIGHT_WIN 500
+#  define HEIGHT_WIN 1000
 # endif
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
+typedef struct	s_img {
+	void	*img_ptr;//puntero de la estructura de imagen
+	char	*img_pixel_ptr;//pixel actual
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}				t_img;
 
 typedef struct	s_window {
     void *mlx;
     void *win;
+	t_img	img;
 }				t_window;
 
 t_pixel	**load_map(int fd);

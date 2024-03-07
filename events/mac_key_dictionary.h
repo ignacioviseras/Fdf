@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 20:11:31 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/07 15:31:48 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:45:24 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,3 @@ enum key_dictionary{
 	N_3 = 85,
 	ESC = 53,
 };
-
-
-//need to see more events
-
-
-// to use it
-// mlx_hook(vars.win, ON_DESTROY, 0, close, &vars);
