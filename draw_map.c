@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/10 17:53:57 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:43:00 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // ################          Pinta cuadrados renderizado           ######################
 /*
     ###  2D image the pixel ###
-    line len is in vyte.
+    line len is in byte.
     witdh 800 line_length 3200
     (can differ for aligment)
 */
@@ -29,7 +29,9 @@ void pixel_put(t_img *img, int x, int y, int color)
     *((unsigned int *)(offset + img->img_pixel_ptr)) = color;
 }
 
-
+/*
+    funcion q genera la malla de pixeles se tiene q indicar el tamaño color y la ventana
+*/
 void screen_pixels(t_window *window, int width, int height, int color)
 {
     int cell_width = round((WIDTH_WIN * 0.8) / width); // Ancho de cada celda
@@ -38,6 +40,13 @@ void screen_pixels(t_window *window, int width, int height, int color)
     int end_x = round(WIDTH_WIN * 0.9);//donde termina x
     int start_y = round(HEIGHT_WIN * 0.1);//donde inicia y
     int end_y = round(HEIGHT_WIN * 0.9);//donde termina y
+    //############# saca las celdas sin margen #############
+    // int cell_width = WIDTH_WIN / width; // Ancho de cada celda
+    // int cell_height = HEIGHT_WIN / height; // Altura de cada celda
+    // int start_x = 0;//donde inicia x
+    // int end_x = WIDTH_WIN;//donde termina x
+    // int start_y = 0;//donde inicia y
+    // int end_y = HEIGHT_WIN;//donde termina y
 
     // Dibujar líneas horizontales
     for (int y = start_y; y <= end_y; ++y) {
@@ -57,6 +66,9 @@ void screen_pixels(t_window *window, int width, int height, int color)
     }
 }
 
+/*
+    funcion q siempre esta a la escucha de cualquier tecla q se pulsa
+*/
 int f(int keysym, t_window *window)
 {
     int width;
@@ -78,6 +90,9 @@ int f(int keysym, t_window *window)
     return (0);
 }
 
+/*
+    controlador de la ventana 
+*/
 int open_window(t_pixel **map)
 {
     t_window window;
@@ -138,35 +153,6 @@ int open_window(t_pixel **map)
 //     for (int i=0; i<100; ++i)
 //     {
 //         mlx_pixel_put(mlx, window, 250 + i, 250, 0xff0000);
-//     }
-//     mlx_loop(mlx);
-// }
-
-
-// ################          cosa rara           ######################
-// int main()
-// {
-//     void *mlx;
-//     void *window;
-//     int size_x;
-//     int size_y;
-
-//     size_x = 0;
-//     mlx = mlx_init();
-//     window = mlx_new_window(mlx, WIDTH_WIN, HEIGHT_WIN, "Fdf");
-//     // for (int i = 0; i < 100; ++i)
-//     // {
-//     //     mlx_pixel_put(mlx, window, 250 + i, 250, 0xff0000);
-//     // }
-//     for ( int y = HEIGHT_WIN * 0.1; y < HEIGHT_WIN * 0.9; ++y)
-//     {
-//         for ( int x = WIDTH_WIN * 0.1; x < WIDTH_WIN * 0.9; ++x)
-//         {
-//             mlx_pixel_put(mlx, window, 250 + x, size_y, 0xff0000);
-//             size_x = x;
-//         }
-//         mlx_pixel_put(mlx, window, size_x, 250 + y, 0xff0000);
-//         size_y = y;
 //     }
 //     mlx_loop(mlx);
 // }

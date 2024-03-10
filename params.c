@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   params.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/06 19:24:05 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:38:09 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ t_pixel	**load_map(int fd)
 
 	x = 0;
 	map = ft_calloc(2, sizeof(t_pixel *));
-	if (!map)
-		return (NULL);
 	while (1)
 	{
 		file_content = get_next_line(fd);
