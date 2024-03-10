@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/03/07 15:46:35 by igvisera         ###   ########.fr        #
+#    Updated: 2024/03/10 16:40:41 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS	=	generate.c \
 			parsing.c \
 			params.c \
 			draw_map.c \
-			# main.c \
+			main.c \
 			
 
 OBJS	=	${SRCS:.c=.o}

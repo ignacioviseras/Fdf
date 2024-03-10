@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/07 18:36:08 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:45:29 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # include <stdlib.h>
 
 # ifndef WIDTH_WIN
-#  define WIDTH_WIN 500
+#  define WIDTH_WIN 800
 # endif
 
 # ifndef HEIGHT_WIN
-#  define HEIGHT_WIN 500
+#  define HEIGHT_WIN 800
 # endif
 
 typedef struct	s_img {
@@ -43,9 +43,11 @@ typedef struct	s_window {
     void *mlx;
     void *win;
 	t_img	img;
+	t_pixel	**map;
 }				t_window;
 
 t_pixel	**load_map(int fd);
 t_pixel	**validate_file(char *fl_name);
+int open_window(t_pixel **map);
 
 #endif
