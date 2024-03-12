@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/12 20:03:17 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/12 22:16:33 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ typedef struct	s_window {
 	t_img	img;
 	t_pixel	**map;
 	int		zoom;
+	int color;
 }				t_window;
 
 t_pixel	**load_map(int fd);
 t_pixel	**validate_file(char *fl_name);
 int open_window(t_pixel **map);
-void bresenham(t_window *window, float width, float height, float width_1, float height_1);
+void bresenham(t_window *window, float width, float height, float width_1, float height_1, int up);
 void draw(t_window *window);
 
 #endif
