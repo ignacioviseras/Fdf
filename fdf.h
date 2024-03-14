@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/13 22:32:38 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:26:47 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct	s_window {
 	t_pixel	**map;
 	int		zoom;
 	int color;
+	int		mv_x;
+	int		mv_y;
+
 }				t_window;
 
 t_pixel	**load_map(int fd);

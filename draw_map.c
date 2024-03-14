@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/13 23:34:44 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/14 22:07:33 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ float mod(float x)
 
 void isometric(float *x, float *y, int z)
 {
-    *x = (*x - *y) * cos(0.8);
-    *y = (*x + *y) * sin(0.8) - z;
+    float aux;
+
+    aux = *x;
+    *x = (aux - *y) * cos(0.8);
+    *y = (aux + *y) * sin(0.8) - z;
 
 }
 
@@ -66,8 +69,6 @@ void bresenham(t_window *window, float width, float height, float width_1, float
     float width_step;
     float height_step;
     int max;
-    int z;
-    // int z_1;
     
     //--- para meter el zoom multiplicams los valores por el zoom q queremos ---
     width *= window->zoom;
@@ -75,12 +76,17 @@ void bresenham(t_window *window, float width, float height, float width_1, float
     width_1 *= window->zoom;
     height_1 *= window->zoom;
     //--- tenemos que comprobar que hay color ---
-    z = up;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
+    // up;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
     // z_1 = up_1;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
-    window->color = (z) ? 0x3eff2e : 0xffffff;
+    window->color = (up || up_1) ? 0x3eff2e : 0xffffff;
     isometric(&width, &height, up);
     isometric(&width_1, &height_1, up_1);
     // printf("up %i", up_1);
+    width += window->mv_x;
+    height += window->mv_y;
+    width_1 += window->mv_x;
+    height_1 += window->mv_y;
+
     width_step = width_1 - width;
     height_step = height_1 - height;
     max = MAX_1(MOD(width_step), MOD(height_step));
@@ -88,21 +94,19 @@ void bresenham(t_window *window, float width, float height, float width_1, float
     height_step /= max;
     while ((int)(width - width_1) || (int)(height - height_1))
     {
-        // printf("wifht '%f', height '%f'\n", width, height);
-        // printf("eje x '%i' eje y '%i' valor->'%i'\n", x, y, window->map[x][y].value);
         pixel_put(&window->img, width, height, window->color);
         width += width_step;
         height += height_step;
     }
+
 }
 
 void draw(t_window *window)
 {
-    
     int width_pixels;
     int height_pixels;
-    height_pixels = 0;
 
+    height_pixels = 0;
     while (height_pixels < window->map[0]->number_row)
     {
         width_pixels = 0;
@@ -125,20 +129,25 @@ void draw(t_window *window)
 int f(int keysym, t_window *window)
 {
     // //ver q han pulsado y sacar color
-    // if (keysym == N_1)//    inverido
-    // else if (keysym == N_2)//    rosalige
-    //     //screen_pixels(window, width, height, 0xec53a0);
-    //     bresenham(window, width, height, 1000, 1000, 0xec53a0);
-
-
-    // printf("tecla pulsada %i\n", keysym);
-    if (keysym == ZOOM_IN)
-        draw(window);
-    if (keysym == ZOOM_OUT)
-        draw(window);
+    printf("tecla pulsada %i\n", keysym);
+    if (keysym == KEYRIGHT)
+        window->mv_x += 10;
+    else if (keysym == KEYLEFT)
+        window->mv_x -= 10;
+    else if (keysym == KEYUP)
+        window->mv_y -= 10;
+    else if (keysym == KEYDOWN)
+        window->mv_y += 10;
     else if (keysym == ESC)//    salimos
         exit(1);
-    mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0, 0);
+    mlx_destroy_image(window->mlx, window->img.img_ptr);
+    window->img.img_ptr = mlx_new_image(window->mlx, WIDTH_WIN, HEIGHT_WIN);
+	window->img.img_pixel_ptr = mlx_get_data_addr(
+                                window->img.img_ptr, 
+                                &window->img.bits_per_pixel, 
+                                &window->img.line_length,
+								&window->img.endian);
+    draw(window);
     return (0);
 }
 
@@ -158,8 +167,12 @@ int open_window(t_pixel **map)
                                 &window.img.line_length,
 								&window.img.endian);
     window.map = map;
-    window.zoom = 30;
+    window.zoom = 25;
+
+    window.mv_y = HEIGHT_WIN / 6;
+    window.mv_x = WIDTH_WIN / 2.4;
     draw(&window);
+
     mlx_key_hook(window.win, f, &window);
     mlx_loop(window.mlx);
     return (0);

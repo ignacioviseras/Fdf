@@ -6,13 +6,15 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:31:50 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/12 20:04:14 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:39:15 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 enum key_dictionary{
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
+	KEYLEFT = 65361,
+	KEYRIGHT = 65363,
+	KEYDOWN = 65364,
+	KEYUP = 65362,
 	ON_MOUSEDOWN = 4,
 	ON_MOUSEUP = 5,
 	ON_MOUSEMOVE = 6,
