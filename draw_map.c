@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/17 18:14:34 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/17 20:25:52 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void isometric(int height,float *x, float *y, int z)
     height_1 -> donde como de largo es
     color -> el color que tiene
 */
-void bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1)
+void bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1, int color)
 {
     float width_step;
     float height_step;
@@ -78,7 +78,7 @@ void bresenham(t_window *window, float width, float height, float width_1, float
     //--- tenemos que comprobar que hay color ---
     // up;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
     // z_1 = up_1;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
-    window->color = (up || up_1) ? 0x3eff2e : 0xffffff;
+    window->color = (color) ? color : 0xffffff;
     isometric(window->z, &width, &height, up);
     isometric(window->z, &width_1, &height_1, up_1);
     // printf("up %i", up_1);
@@ -114,9 +114,9 @@ void draw(t_window *window)
         while (width_pixels < window->map[0][0].number_col)
         {  
             if (width_pixels < window->map[0][0].number_col - 1)
-                bresenham(window, width_pixels, height_pixels, width_pixels+1, height_pixels, window->map[height_pixels][width_pixels].value, window->map[height_pixels][width_pixels+1].value);
+                bresenham(window, width_pixels, height_pixels, width_pixels+1, height_pixels, window->map[height_pixels][width_pixels].value, window->map[height_pixels][width_pixels+1].value, window->map[height_pixels][width_pixels+1].color);
             if (height_pixels < window->map[0]->number_row - 1)
-                bresenham(window, width_pixels, height_pixels, width_pixels, height_pixels+1, window->map[height_pixels][width_pixels].value, window->map[height_pixels+1][width_pixels].value);
+                bresenham(window, width_pixels, height_pixels, width_pixels, height_pixels+1, window->map[height_pixels][width_pixels].value, window->map[height_pixels+1][width_pixels].value, window->map[height_pixels+1][width_pixels].color);
             width_pixels++;
         }
         height_pixels++;
