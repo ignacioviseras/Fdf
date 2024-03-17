@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:31:50 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/17 15:45:43 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:20:03 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ enum key_dictionary{
 	KEY_3 = 65435,
 	ZOOM_IN = 65451,
 	ZOOM_OUT = 65453,
+	KEY_M = 109,
+	KEY_N = 110,
 	ESC = 65307,
 };

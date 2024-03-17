@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/17 15:56:54 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:14:34 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ float mod(float x)
     return (x);
 }
 
-void isometric(float *x, float *y, int z)
+void isometric(int height,float *x, float *y, int z)
 {
     float aux;
 
     aux = *x;
     *x = (aux - *y) * cos(0.523599);
-    *y = (aux + *y) * sin(0.523599) - z;
-
+    *y = (aux + *y) * sin(0.523599) - z * height;
+    
 }
 
 /*
@@ -79,8 +79,8 @@ void bresenham(t_window *window, float width, float height, float width_1, float
     // up;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
     // z_1 = up_1;//correspondencia de cada altura respecto a sizes de los pixels del mapa(cada cuadrado)
     window->color = (up || up_1) ? 0x3eff2e : 0xffffff;
-    isometric(&width, &height, up);
-    isometric(&width_1, &height_1, up_1);
+    isometric(window->z, &width, &height, up);
+    isometric(window->z, &width_1, &height_1, up_1);
     // printf("up %i", up_1);
     width += window->mv_x;
     height += window->mv_y;
@@ -140,11 +140,12 @@ int f(int keysym, t_window *window)
     else if (keysym == ZOOM_IN)
         window->zoom += 10;
     else if (keysym == ZOOM_OUT)
-    {
-        if (window->zoom > 10)
             window->zoom -= 10;
-    }
-    else if (keysym == ESC)//    salimos
+    else if (keysym == KEY_M)
+        window->z += 10;
+    else if (keysym == KEY_N)
+        window->z -= 10;
+    else if (keysym == ESC)
         exit(1);
     mlx_destroy_image(window->mlx, window->img.img_ptr);
     window->img.img_ptr = mlx_new_image(window->mlx, WIDTH_WIN, HEIGHT_WIN);
@@ -171,8 +172,8 @@ int open_window(t_pixel **map)
                                 &window.img.line_length,
 								&window.img.endian);
     window.map = map;
+    window.z = 1;
     window.zoom = 10;
-
     window.mv_y = HEIGHT_WIN / 6;
     window.mv_x = WIDTH_WIN / 2.4;
     draw(&window);
