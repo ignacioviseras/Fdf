@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/14 22:07:33 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:56:54 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void pixel_put(t_img *img, int x, int y, int color)
     int offset;
     if (x < 0|| y < 0)
         return ;
-    // printf("x %i, y %i\n", x, y);
+
     offset = (img->line_length * y) + (x * (img->bits_per_pixel / 8));
     *((unsigned int *)(offset + img->img_pixel_ptr)) = color;
 }
@@ -50,8 +50,8 @@ void isometric(float *x, float *y, int z)
     float aux;
 
     aux = *x;
-    *x = (aux - *y) * cos(0.8);
-    *y = (aux + *y) * sin(0.8) - z;
+    *x = (aux - *y) * cos(0.523599);
+    *y = (aux + *y) * sin(0.523599) - z;
 
 }
 
@@ -94,7 +94,8 @@ void bresenham(t_window *window, float width, float height, float width_1, float
     height_step /= max;
     while ((int)(width - width_1) || (int)(height - height_1))
     {
-        pixel_put(&window->img, width, height, window->color);
+        if ((width > 0 && width < WIDTH_WIN) && (height > 0 && height < HEIGHT_WIN))
+            pixel_put(&window->img, width, height, window->color);
         width += width_step;
         height += height_step;
     }
@@ -128,8 +129,6 @@ void draw(t_window *window)
 */
 int f(int keysym, t_window *window)
 {
-    // //ver q han pulsado y sacar color
-    printf("tecla pulsada %i\n", keysym);
     if (keysym == KEYRIGHT)
         window->mv_x += 10;
     else if (keysym == KEYLEFT)
@@ -138,15 +137,20 @@ int f(int keysym, t_window *window)
         window->mv_y -= 10;
     else if (keysym == KEYDOWN)
         window->mv_y += 10;
+    else if (keysym == ZOOM_IN)
+        window->zoom += 10;
+    else if (keysym == ZOOM_OUT)
+    {
+        if (window->zoom > 10)
+            window->zoom -= 10;
+    }
     else if (keysym == ESC)//    salimos
         exit(1);
     mlx_destroy_image(window->mlx, window->img.img_ptr);
     window->img.img_ptr = mlx_new_image(window->mlx, WIDTH_WIN, HEIGHT_WIN);
 	window->img.img_pixel_ptr = mlx_get_data_addr(
-                                window->img.img_ptr, 
-                                &window->img.bits_per_pixel, 
-                                &window->img.line_length,
-								&window->img.endian);
+                                window->img.img_ptr, &window->img.bits_per_pixel, 
+                                &window->img.line_length, &window->img.endian);
     draw(window);
     return (0);
 }
@@ -167,7 +171,7 @@ int open_window(t_pixel **map)
                                 &window.img.line_length,
 								&window.img.endian);
     window.map = map;
-    window.zoom = 25;
+    window.zoom = 10;
 
     window.mv_y = HEIGHT_WIN / 6;
     window.mv_x = WIDTH_WIN / 2.4;

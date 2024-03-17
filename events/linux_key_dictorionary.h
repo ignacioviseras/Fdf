@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:31:50 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/14 19:39:15 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:45:43 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@ enum key_dictionary{
 	KEYRIGHT = 65363,
 	KEYDOWN = 65364,
 	KEYUP = 65362,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
-	ON_DESTROY = 17,
 	KEY_1 = 65436,
 	KEY_2 = 65433,
 	KEY_3 = 65435,

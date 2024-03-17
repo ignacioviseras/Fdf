@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:41:21 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/14 21:29:44 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:32:35 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,21 @@ int	main(void)
 {
     t_pixel **map;
 
-    map = validate_file("maps/42.fdf");
+    map = validate_file("maps/pylone.fdf");
     if (map == NULL)
         return (0);
-    printf("%i ", map[0][0].value);
-    printf("%i ", map[0][1].value);
-    printf("%i ", map[0][2].value);
-    printf("\n");
-    printf("%i ", map[1][0].value);
-    printf("%i ", map[1][1].value);
-    printf("%i ", map[1][2].value);
-    printf("\n");
-    printf("%i ", map[2][0].value);
-    printf("%i ", map[2][1].value);
-    printf("%i ", map[2][2].value);
-    printf("\n");
+    // printf("%i ", map[0][0].value);
+    // printf("%i ", map[0][1].value);
+    // printf("%i ", map[0][2].value);
+    // printf("\n");
+    // printf("%i ", map[1][0].value);
+    // printf("%i ", map[1][1].value);
+    // printf("%i ", map[1][2].value);
+    // printf("\n");
+    // printf("%i ", map[2][0].value);
+    // printf("%i ", map[2][1].value);
+    // printf("%i ", map[2][2].value);
+    // printf("\n");
     printf("Numero de filas %i y numero de columns %i\n",
 		 map[0]->number_row,
 		 map[0][0].number_col);
