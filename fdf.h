@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/17 20:26:12 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:27:37 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define FDF_H
 
 // # include <mlx.h>
+#include <math.h>
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
+# include "./utils/utils.h"
 # include "./mlx_linux/mlx.h"
 # include "./colors/colors.h"
 # include "./events/linux_key_dictorionary.h"
 // # include "./events/mac_key_dictionary.h"
-# include "./utils/utils.h"
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
 
 # ifndef WIDTH_WIN
 #  define WIDTH_WIN 800
@@ -54,7 +55,11 @@ typedef struct	s_window {
 t_pixel	**load_map(int fd);
 t_pixel	**validate_file(char *fl_name);
 int open_window(t_pixel **map);
-void bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1, int color);
-void draw(t_window *window);
+// void bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1, int color);
+// void draw(t_window *window);
+float	get_max(float num_1, float num_2);
+float	mod(float num_1);
+void isometric(int height,float *x, float *y, int z);
+void	zoom(float *width, float *height, float *width_1, float *height_1, int zoom);
 
 #endif

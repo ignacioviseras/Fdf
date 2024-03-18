@@ -6,7 +6,7 @@
 #    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/03/10 16:40:41 by igvisera         ###   ########.fr        #
+#    Updated: 2024/03/18 19:43:43 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,11 @@ MLX_OBJS	=	$(addprefix $(MLX_SRC), *.o)
 MLX     	=	$(addprefix $(MLX_SRC), $(MLX_A))
 
 SRCS	=	generate.c \
-			parsing.c \
+			draw_map_utils.c \
 			params.c \
 			draw_map.c \
 			main.c \
+			parsing.c \
 			
 
 OBJS	=	${SRCS:.c=.o}
