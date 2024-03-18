@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/18 21:27:00 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/18 22:06:59 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ static void	pixel_put(t_img *img, int x, int y, int color)
     color -> el color que tiene
     !!!!!!!!!pasar datos a una lista funcion solo 4 argumentos max!!!!!!!!!!
 */
-static void	bresenham(t_window *window, float width, float height,
-		float width_1, float height_1, int up, int up_1, int color)
+static void	bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1, int color)
 {
 	float	width_step;
 	float	height_step;
 	int		max;
 
 	zoom(&width, &height, &width_1, &height_1, window->zoom);
-    window->color = (color) ? color : 0x1eff05;
+	window->color = (color) ? color : 0x1eff05;
 	isometric(window->z, &width, &height, up);
 	isometric(window->z, &width_1, &height_1, up_1);
 	width += window->mv_x;
@@ -74,11 +73,11 @@ static void	draw(t_window *window)
 	int	width_pixels;
 	int	height_pixels;
 
-	height_pixels = 0;
-	while (height_pixels < window->map[0]->number_row)
+	height_pixels = -1;
+	while (++height_pixels < window->map[0]->number_row)
 	{
-		width_pixels = 0;
-		while (width_pixels < window->map[0][0].number_col)
+		width_pixels = -1;
+		while (++width_pixels < window->map[0][0].number_col)
 		{
 			if (width_pixels < window->map[0][0].number_col - 1)
 				bresenham(window, width_pixels, height_pixels, width_pixels + 1,
@@ -92,12 +91,9 @@ static void	draw(t_window *window)
 						window->map[height_pixels][width_pixels].value,
 						window->map[height_pixels + 1][width_pixels].value,
 						window->map[height_pixels + 1][width_pixels].color);
-			width_pixels++;
 		}
-		height_pixels++;
 	}
-	mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0,
-			0); //lanzamos lo generedo a la pantalla
+	mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0, 0);
 }
 
 /*
@@ -125,9 +121,9 @@ static int	f(int keysym, t_window *window)
 		exit(1);
 	mlx_destroy_image(window->mlx, window->img.img_ptr);
 	window->img.img_ptr = mlx_new_image(window->mlx, WIDTH_WIN, HEIGHT_WIN);
-	window->img.img_pixel_ptr = mlx_get_data_addr(
-		window->img.img_ptr, &window->img.bits_per_pixel,
-			&window->img.line_length, &window->img.endian);
+	window->img.img_pixel_ptr = mlx_get_data_addr(window->img.img_ptr,
+			&window->img.bits_per_pixel, &window->img.line_length,
+			&window->img.endian);
 	draw(window);
 	return (0);
 }
@@ -142,11 +138,9 @@ int	open_window(t_pixel **map)
 	window.mlx = mlx_init();
 	window.win = mlx_new_window(window.mlx, WIDTH_WIN, HEIGHT_WIN, "Fdf");
 	window.img.img_ptr = mlx_new_image(window.mlx, WIDTH_WIN, HEIGHT_WIN);
-	window.img.img_pixel_ptr = mlx_get_data_addr(
-		window.img.img_ptr,
-		&window.img.bits_per_pixel,
-		&window.img.line_length,
-		&window.img.endian);
+	window.img.img_pixel_ptr = mlx_get_data_addr(window.img.img_ptr,
+			&window.img.bits_per_pixel, &window.img.line_length,
+			&window.img.endian);
 	window.map = map;
 	window.z = 1;
 	window.zoom = 10;
