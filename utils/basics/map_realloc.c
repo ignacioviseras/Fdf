@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:47:25 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/06 14:37:21 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/22 19:15:40 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_pixel	**map_realloc(t_pixel **ptr, size_t len)
 {
-	t_pixel	**new_ptr;
-	long unsigned int x;
+	t_pixel				**new_ptr;
+	long unsigned int	x;
 
 	x = 0;
 	if (len == 0)
@@ -37,19 +37,3 @@ t_pixel	**map_realloc(t_pixel **ptr, size_t len)
 	free(ptr);
 	return (new_ptr);
 }
-
-// int main()
-// {
-// 	t_pixel **mapa;
-
-// 	mapa = ft_calloc(2, sizeof(t_pixel *));
-// 	*mapa = ft_calloc(1, sizeof(t_pixel *));
-// 	mapa[0][0].value = 2;
-// 	mapa[0][0].color = 0xFFFFFF;
-// 	mapa = ft_realloc(mapa, (2 + 1) * sizeof(t_pixel *));
-// 	printf("Pos 0x0->'%i'\n", mapa[0][0].value);
-// 	printf("Pos 0x0->'%i'\n", mapa[0][0].color);
-// 	free(*mapa);
-// 	free(mapa);
-// 	return(0);
-// }

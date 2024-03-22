@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   linux_key_dictorionary.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:31:50 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/17 16:20:03 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/22 19:25:19 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-enum key_dictionary{
+enum	e_linux_key_dictionary
+{
 	KEYLEFT = 65361,
 	KEYRIGHT = 65363,
 	KEYDOWN = 65364,

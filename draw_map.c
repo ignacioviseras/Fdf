@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/18 22:06:59 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/22 19:27:39 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int	open_window(t_pixel **map)
 			&window.img.endian);
 	window.map = map;
 	window.z = 1;
-	window.zoom = 10;
+	window.zoom = 11;
 	window.mv_y = HEIGHT_WIN / 6;
 	window.mv_x = WIDTH_WIN / 2.4;
 	draw(&window);

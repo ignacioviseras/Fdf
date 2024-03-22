@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:44:45 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/02 23:47:21 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/22 19:13:19 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_all(void **str)
 {
-	void **pointer_pos;
+	void	**pointer_pos;
 
 	pointer_pos = str;
 	while (*str)
