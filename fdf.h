@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/22 19:20:32 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:09:54 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,24 @@ typedef struct	s_window {
 	int		z;
 }				t_window;
 
+typedef struct	s_bresenham {
+	float width_pixels;
+    float height_pixels;
+    float width_pixels_1;
+    float height_pixels_1;
+	int	value;
+	int	value_1;
+	int	color;
+}				t_bresenham;
+
 t_pixel	**load_map(int fd);
 t_pixel	**validate_file(char *fl_name);
 int open_window(t_pixel **map);
 float	get_max(float num_1, float num_2);
 float	mod(float num_1);
-void isometric(int height,float *x, float *y, int z);
+void	clean_bresham_estruct(t_bresenham *b);
+// void isometric(int height,float *x, float *y, int z);
+void	isometric(int height, int z, t_bresenham *b);
 void	zoom(float *width, float *height, float *width_1, float *height_1, int zoom);
 
 #endif
