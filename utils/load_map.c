@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/10 16:52:07 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/31 21:07:48 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	n_colum(char const *s, char c)
 
 	index = 0;
 	colum = 0;
-	index = 0;
 	if (!s)
 		return (0);
 	while (s[index] && s[index] == c)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:36:54 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/23 22:20:50 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/26 19:08:06 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,40 +26,42 @@ float	mod(float num_1)
 	return (num_1);
 }
 
-// void	isometric(int height, float *x, float *y, int z)
-// {
-// 	float	aux;
-
-// 	aux = *x;
-// 	*x = (aux - *y) * cos(0.523599);
-// 	*y = (aux + *y) * sin(0.523599) - z * height;
-// }
-
-void	isometric(int height, int z, t_bresenham *b)
+void	isometric(t_bresenham *b, int z)
 {
 	float	aux;
+	float	aux_1;
 
-	aux = *b->width_pixels;
-	*x = (aux - *y) * cos(0.523599);
-	*y = (aux + *y) * sin(0.523599) - z * height;
+	aux = b->width_pixels;
+	aux_1 = b->width_pixels_1;
+	b->width_pixels = (aux - b->height_pixels) * cos(0.523599);
+	b->height_pixels = (aux + b->height_pixels) * sin(0.523599) - z * b->value;
+	b->width_pixels_1 = (aux_1 - b->height_pixels_1) * cos(0.523599);
+	b->height_pixels_1 = (aux_1 + b->height_pixels_1) * sin(0.523599) - z
+		* b->value_1;
 }
 
-void	zoom(float *width, float *height, float *width_1, float *height_1,
-		int zoom)
+void	horizontal_lines(t_window *window, t_bresenham *b, int width_pixels,
+		int height_pixels)
 {
-	*width *= zoom;
-	*height *= zoom;
-	*width_1 *= zoom;
-	*height_1 *= zoom;
+	b->width_pixels_1 = width_pixels + 1;
+	b->height_pixels_1 = height_pixels;
+	b->width_pixels = width_pixels;
+	b->height_pixels = height_pixels;
+	b->value = window->map[height_pixels][width_pixels].value;
+	b->value_1 = window->map[height_pixels][width_pixels + 1].value;
+	b->color = window->map[height_pixels][width_pixels + 1].color;
+	bresenham(window, b);
 }
 
-void clean_bresham_estruct(t_bresenham *b)
+void	vertical_lines(t_window *window, t_bresenham *b, int width_pixels,
+		int height_pixels)
 {
-	b->width_pixels = 0;
-	b->height_pixels = 0;
-	b->width_pixels_1 = 0;
-	b->height_pixels_1 = 0;
-	b->value = 0;
-	b->value_1 = 0;
-	b->color = 0;
+	b->width_pixels_1 = width_pixels;
+	b->height_pixels_1 = height_pixels + 1;
+	b->width_pixels = width_pixels;
+	b->height_pixels = height_pixels;
+	b->value = window->map[height_pixels][width_pixels].value;
+	b->value_1 = window->map[height_pixels + 1][width_pixels].value;
+	b->color = window->map[height_pixels + 1][width_pixels].color;
+	bresenham(window, b);
 }

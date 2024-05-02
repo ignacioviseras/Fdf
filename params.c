@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/10 19:38:09 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:59:42 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	validate_map(t_pixel **map, int map_long)
 	{
 		if (n_columns != map[x][0].number_col)
 		{
-			printf("\t### Error ###\nThe map have different size.\n");
+			ft_printf("\t### Error ###\nThe map have different size.\n");
 			return (0);
 		}
 		x++;

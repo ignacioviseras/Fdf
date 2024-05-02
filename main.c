@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:41:21 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/22 19:06:22 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:05:06 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	main(void)
 {
     t_pixel **map;
 
-    map = validate_file("maps/42.fdf");
+    map = validate_file("maps/t1.fdf");
     if (map == NULL)
         return (0);
-    printf("Numero de filas %i y numero de columns %i\n",
+    ft_printf("Numero de filas %i y numero de columns %i\n",
 		 map[0]->number_row,
 		 map[0][0].number_col);
 	open_window(map);

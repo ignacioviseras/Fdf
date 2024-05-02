@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/23 22:21:01 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:43:08 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static void	pixel_put(t_img *img, int x, int y, int color)
 {
 	int	offset;
 
-	// if (x < 0 || y < 0)
-	//     return ;
 	offset = (img->line_length * y) + (x * (img->bits_per_pixel / 8));
 	*((unsigned int *)(offset + img->img_pixel_ptr)) = color;
 }
@@ -39,127 +37,53 @@ static void	pixel_put(t_img *img, int x, int y, int color)
     color -> el color que tiene
     !!!!!!!!!pasar datos a una lista funcion solo 4 argumentos max!!!!!!!!!!
 */
-// static void	bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1, int color)
-// {
-// 	float	width_step;
-// 	float	height_step;
-// 	int		max;
-
-// 	zoom(&width, &height, &width_1, &height_1, window->zoom);
-// 	window->color = (color) ? color : 0x1eff05;
-// 	isometric(window->z, &width, &height, up);
-// 	isometric(window->z, &width_1, &height_1, up_1);
-// 	width += window->mv_x;
-// 	height += window->mv_y;
-// 	width_1 += window->mv_x;
-// 	height_1 += window->mv_y;
-// 	width_step = width_1 - width;
-// 	height_step = height_1 - height;
-// 	max = get_max(mod(width_step), mod(height_step));
-// 	width_step /= max;
-// 	height_step /= max;
-// 	while ((int)(width - width_1) || (int)(height - height_1))
-// 	{
-// 		if ((width > 0 && width < WIDTH_WIN) && (height > 0
-// 				&& height < HEIGHT_WIN))
-// 			pixel_put(&window->img, width, height, window->color);
-// 		width += width_step;
-// 		height += height_step;
-// 	}
-// }
-
-// static void	draw(t_window *window)
-// {
-// 	int	width_pixels;
-// 	int	height_pixels;
-
-// 	height_pixels = -1;
-// 	while (++height_pixels < window->map[0]->number_row)
-// 	{
-// 		width_pixels = -1;
-// 		while (++width_pixels < window->map[0][0].number_col)
-// 		{
-// 			if (width_pixels < window->map[0][0].number_col - 1)
-// 				bresenham(window, width_pixels, height_pixels, width_pixels + 1,
-// 						height_pixels,
-// 						window->map[height_pixels][width_pixels].value,
-// 						window->map[height_pixels][width_pixels + 1].value,
-// 						window->map[height_pixels][width_pixels + 1].color);
-// 			if (height_pixels < window->map[0]->number_row - 1)
-// 				bresenham(window, width_pixels, height_pixels, width_pixels,
-// 						height_pixels + 1,
-// 						window->map[height_pixels][width_pixels].value,
-// 						window->map[height_pixels + 1][width_pixels].value,
-// 						window->map[height_pixels + 1][width_pixels].color);
-// 		}
-// 	}
-// 	mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0, 0);
-// }
-
-static void	bresenham(t_window *window, t_bresenham *b)
+void	bresenham(t_window *window, t_bresenham *b)
 {
 	float	width_step;
 	float	height_step;
 	int		max;
 
-	zoom(&b->width_pixels, &b->height_pixels, &b->width_pixels_1, &b->height_pixels_1, window->zoom);
+	zoom(b, window->zoom);
+	move(b, window);
+	isometric(b, window->z);
 	window->color = (b->color) ? b->color : 0x1eff05;
-	isometric(window->z, b->value, &b);
-	// isometric(window->z, &b->width_pixels, &b->height_pixels, b->value);
-	// isometric(window->z, &b->width_pixels_1, &b->height_pixels_1, b->value_1);
-	b->width_pixels += window->mv_x;
-	b->height_pixels += window->mv_y;
-	b->width_pixels_1 += window->mv_x;
-	b->height_pixels_1 += window->mv_y;
-	width_step = b->width_pixels_1  - b->width_pixels;
+	width_step = b->width_pixels_1 - b->width_pixels;
 	height_step = b->height_pixels_1 - b->height_pixels;
 	max = get_max(mod(width_step), mod(height_step));
 	width_step /= max;
 	height_step /= max;
-	while ((int)(b->width_pixels - b->width_pixels_1) || (int)(b->height_pixels - b->height_pixels_1))
+	while ((int)(b->width_pixels - b->width_pixels_1) || (int)(b->height_pixels
+			- b->height_pixels_1))
 	{
-		if ((b->width_pixels > 0 && b->width_pixels < WIDTH_WIN) && (b->height_pixels > 0
-				&& b->height_pixels < HEIGHT_WIN))
-			pixel_put(&window->img, b->width_pixels, b->height_pixels, window->color);
+		if ((b->width_pixels > 0 && b->width_pixels < WIDTH_WIN)
+			&& (b->height_pixels > 0 && b->height_pixels < HEIGHT_WIN))
+			pixel_put(&(window->img), (int)b->width_pixels,
+				(int)b->height_pixels, window->color);
 		b->width_pixels += width_step;
 		b->height_pixels += height_step;
 	}
 }
 
-// static void	bresenham(t_window *window, float width, float height, float width_1, float height_1, int up, int up_1, int color)
-
 static void	draw(t_window *window)
 {
-	t_bresenham b;
+	t_bresenham	b;
+	int			width_pixels;
+	int			height_pixels;
 
-	clean_bresham_estruct(&b);
-	b.height_pixels = -1;
-	while (++b.height_pixels < window->map[0]->number_row)
+	height_pixels = -1;
+	while (++height_pixels < window->map[0]->number_row)
 	{
-		b.width_pixels = -1;
-		while (++b.width_pixels < window->map[0][0].number_col)
+		width_pixels = -1;
+		while (++width_pixels < window->map[0][0].number_col)
 		{
-			if (b.width_pixels < window->map[0][0].number_col - 1)
-			{
-				b.width_pixels_1 = b.width_pixels + 1;
-				b.height_pixels_1 = b.height_pixels;
-				b.value = window->map[(int) b.height_pixels][(int) b.width_pixels].value;
-				b.value_1 = window->map[(int) b.height_pixels][(int) b.width_pixels + 1].value;
-				b.color = window->map[(int) b.height_pixels][(int) b.width_pixels + 1].color;
-				bresenham(window, &b);
-			}
-			if (b.height_pixels < window->map[0]->number_row - 1)
-			{
-				b.width_pixels_1 = b.width_pixels;
-				b.height_pixels_1 = b.height_pixels + 1;
-				b.value = window->map[(int) b.height_pixels][(int) b.width_pixels].value;
-				b.value_1 = window->map[(int) b.height_pixels + 1][(int) b.width_pixels].value;
-				b.color = window->map[(int) b.height_pixels + 1][(int) b.width_pixels].color;
-				bresenham(window, &b);
-			}
+			if (width_pixels < window->map[0][0].number_col - 1)
+				horizontal_lines(window, &b, width_pixels, height_pixels);
+			if (height_pixels < window->map[0]->number_row - 1)
+				vertical_lines(window, &b, width_pixels, height_pixels);
 		}
 	}
-	mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0, 0);
+	mlx_put_image_to_window(window->mlx, window->win, window->img.img_ptr, 0,
+		0);
 }
 
 /*
