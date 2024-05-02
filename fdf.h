@@ -6,22 +6,26 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/26 19:34:31 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:01:43 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FDF_H
 # define FDF_H
 
 // # include <mlx.h>
-# include "./colors/colors.h"
 # include "./events/linux_key_dictorionary.h"
 # include "./mlx_linux/mlx.h"
+# include <mlx.h>
+// # include "./events/linux_key_dictorionary.h"
+// # include "./mlx_linux/mlx.h"
 # include "./utils/utils.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+// # include "./events/mac_key_dictionary.h"
 // # include "./events/mac_key_dictionary.h"
 
 # ifndef WIDTH_WIN

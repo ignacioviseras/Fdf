@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/31 19:43:08 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:56:26 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ static int	f(int keysym, t_window *window)
 	else if (keysym == KEYDOWN)
 		window->mv_y += 10;
 	else if (keysym == ZOOM_IN)
-		window->zoom += 10;
+		window->zoom += 1;
 	else if (keysym == ZOOM_OUT)
-		window->zoom -= 10;
+		window->zoom -= 1;
 	else if (keysym == KEY_M)
 		window->z += 10;
 	else if (keysym == KEY_N)
@@ -133,7 +133,7 @@ int	open_window(t_pixel **map)
 			&window.img.endian);
 	window.map = map;
 	window.z = 1;
-	window.zoom = 11;
+	window.zoom = 1;
 	window.mv_y = HEIGHT_WIN / 6;
 	window.mv_x = WIDTH_WIN / 2.4;
 	draw(&window);
