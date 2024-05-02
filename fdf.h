@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/05/02 20:01:43 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:05:20 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // # include <mlx.h>
 # include "./events/linux_key_dictorionary.h"
 # include "./mlx_linux/mlx.h"
-# include <mlx.h>
+// # include <mlx.h>
 // # include "./events/linux_key_dictorionary.h"
 // # include "./mlx_linux/mlx.h"
 # include "./utils/utils.h"
