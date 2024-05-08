@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/05/02 19:56:26 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:44:10 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	bresenham(t_window *window, t_bresenham *b)
 	zoom(b, window->zoom);
 	move(b, window);
 	isometric(b, window->z);
-	window->color = (b->color) ? b->color : 0x1eff05;
+	if (window->color)
+		window->color = b->color;
 	width_step = b->width_pixels_1 - b->width_pixels;
 	height_step = b->height_pixels_1 - b->height_pixels;
 	max = get_max(mod(width_step), mod(height_step));
@@ -101,7 +102,7 @@ static int	f(int keysym, t_window *window)
 		window->mv_y += 10;
 	else if (keysym == ZOOM_IN)
 		window->zoom += 1;
-	else if (keysym == ZOOM_OUT)
+	else if (keysym == ZOOM_OUT && window->zoom >= 2)
 		window->zoom -= 1;
 	else if (keysym == KEY_M)
 		window->z += 10;
@@ -133,7 +134,7 @@ int	open_window(t_pixel **map)
 			&window.img.endian);
 	window.map = map;
 	window.z = 1;
-	window.zoom = 1;
+	window.zoom = 3;
 	window.mv_y = HEIGHT_WIN / 6;
 	window.mv_x = WIDTH_WIN / 2.4;
 	draw(&window);

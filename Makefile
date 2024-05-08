@@ -3,33 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 17:35:19 by igvisera          #+#    #+#              #
-#    Updated: 2024/03/26 17:55:37 by igvisera         ###   ########.fr        #
+#    Updated: 2024/05/08 20:45:49 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
-# CFLAGS	=	-Wall -Wextra -g3 
-# CFLAGS	=	-Wall -Wextra -Werror -g3 
-CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -O3
-# CFLAGS	=	-Wall -Wextra -g3 -fsanitize=address
 
-# STRUCT	=	-lmlx -framework OpenGL -framework AppKit
-# STRUCT			= -lmlx -lXext -lX11 -lm
-STRUCT			= -Imlx_linux -lXext -lX11 -lm -lz
+#laptop
+# CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -O3
+# STRUCT			= -Imlx_linux -lXext -lX11 -lm -lz
 
+#42 linux
+CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -O3 -fPIE 
+STRUCT			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 UTILS_A		=	utils.a
 UTILS_SRC 	=	./utils/
 UTILS_OBJS	=	$(addprefix $(UTILS_SRC), *.o)
 UTILS     	=	$(addprefix $(UTILS_SRC), $(UTILS_A))
 
-MLX_A		=	libmlx.dylib
-MLX_SRC 	=	./mlx/
-MLX_OBJS	=	$(addprefix $(MLX_SRC), *.o)
-MLX     	=	$(addprefix $(MLX_SRC), $(MLX_A))
 
 SRCS	=	draw_map_utils.c \
 			params.c \
@@ -41,10 +36,13 @@ OBJS	=	${SRCS:.c=.o}
 
 all: $(NAME)
 
+#laptop
+# $(NAME): $(UTILS) $(OBJS)
+# gcc $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
+
+#42 linux
 $(NAME): $(UTILS) $(OBJS)
-	gcc $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
-# gcc $(CFLAGS) $(OBJS) -I ./fdf.h $(UTILS) $(STRUCT) -o $(NAME)
- 	# gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME)
+	gcc $(CFLAGS) $(OBJS)  $(UTILS) -o $(NAME) $(STRUCT) -I ./fdf.h
 
 $(UTILS):
 	$(MAKE) -C $(UTILS_SRC)

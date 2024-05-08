@@ -11,7 +11,12 @@
 # **************************************************************************** #
 
 NAME			=	utils.a
-CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
+
+#laptop
+# CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
+
+#42 linux
+CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address -fPIE
 
 PATH_BASICS 	=	./basics/
 PATH_PRINTF 	=	./printf/

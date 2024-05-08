@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_actions.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:54:35 by igvisera          #+#    #+#             */
-/*   Updated: 2024/05/02 20:02:23 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:44:49 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 void	zoom(t_bresenham *b, int zoom)
 {
-	// ft_printf("Zoom '%i'", zoom);
-	// if (zoom <= 11)
-	// 	return ;
 	b->width_pixels *= zoom;
 	b->height_pixels *= zoom;
 	b->width_pixels_1 *= zoom;
