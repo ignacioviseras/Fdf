@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:16:28 by igvisera          #+#    #+#             */
-/*   Updated: 2024/05/08 20:44:10 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/09/25 22:02:50 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	pixel_put(t_img *img, int x, int y, int color)
 }
 
 /*
-    31m.50
     *window -> estructura de la ventana
     width -> donde inicia
     height -> donde termina
@@ -46,8 +45,7 @@ void	bresenham(t_window *window, t_bresenham *b)
 	zoom(b, window->zoom);
 	move(b, window);
 	isometric(b, window->z);
-	if (window->color)
-		window->color = b->color;
+	set_color(b, window);
 	width_step = b->width_pixels_1 - b->width_pixels;
 	height_step = b->height_pixels_1 - b->height_pixels;
 	max = get_max(mod(width_step), mod(height_step));

@@ -3,30 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:46:15 by igvisera          #+#    #+#             */
-/*   Updated: 2024/05/02 20:05:20 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:52:33 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FDF_H
 # define FDF_H
 
-// # include <mlx.h>
-# include "./events/linux_key_dictorionary.h"
 # include "./mlx_linux/mlx.h"
-// # include <mlx.h>
-// # include "./events/linux_key_dictorionary.h"
-// # include "./mlx_linux/mlx.h"
 # include "./utils/utils.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-// # include "./events/mac_key_dictionary.h"
-// # include "./events/mac_key_dictionary.h"
 
 # ifndef WIDTH_WIN
 #  define WIDTH_WIN 800
@@ -38,8 +30,8 @@
 
 typedef struct s_img
 {
-	void	*img_ptr;       //puntero de la estructura de imagen
-	char	*img_pixel_ptr; //pixel actual
+	void	*img_ptr;
+	char	*img_pixel_ptr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -69,6 +61,22 @@ typedef struct s_bresenham
 	int		color;
 }			t_bresenham;
 
+enum e_linux_key_dictionary
+{
+	KEYLEFT = 65361,
+	KEYRIGHT = 65363,
+	KEYDOWN = 65364,
+	KEYUP = 65362,
+	KEY_1 = 65436,
+	KEY_2 = 65433,
+	KEY_3 = 65435,
+	ZOOM_IN = 65451,
+	ZOOM_OUT = 65453,
+	KEY_M = 109,
+	KEY_N = 110,
+	ESC = 65307,
+};
+
 t_pixel		**load_map(int fd);
 t_pixel		**validate_file(char *fl_name);
 int			open_window(t_pixel **map);
@@ -82,5 +90,7 @@ void		horizontal_lines(t_window *window, t_bresenham *b, int width_pixels,
 				int height_pixels);
 void		vertical_lines(t_window *window, t_bresenham *b, int width_pixels,
 				int height_pixels);
+int get_color(int value);
+void set_color(t_bresenham *b, t_window *win);
 
 #endif

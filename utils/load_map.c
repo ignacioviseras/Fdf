@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:06 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/31 21:07:48 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:46:49 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static int	n_colum(char const *s, char c)
 4
 */
 
+
 t_pixel	*struct_map(char *line, int c)
 {
 	int		i;
@@ -78,7 +79,7 @@ t_pixel	*struct_map(char *line, int c)
 		else
 		{
 			map[i].value = ft_atoi(line_extract[i]);
-			map[i].color = 0xFFFFFF;
+			// map[i].color = 0xFFFFFF;
 		}
 	}
 	map[0].number_col = i;

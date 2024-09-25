@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   params.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:00:11 by igvisera          #+#    #+#             */
-/*   Updated: 2024/03/31 19:59:42 by igvisera         ###   ########.fr       */
+/*   Updated: 2024/05/12 13:06:46 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_pixel	**load_map(int fd)
 	map[0]->number_row = x;
 	if (validate_map(map, x) == 0)
 		return (free_all((void **)map), NULL);
-	return (map);// esto retorna map cuado se termine el programa se tendria que liberar map
+	return (map);
 }
 
 t_pixel	**validate_file(char *fl_name)
